@@ -1,0 +1,153 @@
+﻿.login-box {
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    background-image: url(../images/bg.jpg);
+    z-index: 100000;
+    background-size: 100% 100%
+}
+
+.login-box > header {
+    padding: 20px 190px;
+    letter-spacing: -1px;
+    text-align: center;
+    /*margin-top: 90px;*/
+    padding-top:110px;
+}
+
+    .login-box > header h1 {
+        color: #00a5a5;
+        font-weight: 600;
+        font-size: 2em;
+        line-height: 1;
+        margin-bottom: 0;
+    }
+
+.form-horizontal {
+    padding-bottom: 40px;
+    border-radius: 15px;
+    text-align: center;
+}
+
+    .form-horizontal .login-form-group {
+        padding: 0 40px;
+        margin: 0 0 20px 0;
+        position: relative;
+    }
+
+    .form-horizontal .form-control {
+        background: #f0f0f0;
+        border: none;
+        border-radius: 20px;
+        box-shadow: none;
+        padding: 0 20px 0 45px;
+        height: 40px;
+        transition: all 0.3s ease 0s;
+    }
+
+        .form-horizontal .form-control:focus {
+            background: #e0e0e0;
+            box-shadow: none;
+            outline: 0 none;
+        }
+
+    .form-horizontal .login-form-group i {
+        position: absolute;
+        top: 12px;
+        left: 60px;
+        font-size: 17px;
+        color: #00a5a5;
+        transition: all 0.5s ease 0s;
+    }
+
+    .form-horizontal .form-control:focus + i {
+        color: #00a5a5;
+    }
+
+    .form-horizontal .fa-question-circle {
+        display: inline-block;
+        position: absolute;
+        top: 12px;
+        right: 60px;
+        font-size: 20px;
+        color: #808080;
+        transition: all 0.5s ease 0s;
+    }
+
+        .form-horizontal .fa-question-circle:hover {
+            color: #000;
+        }
+
+    .form-horizontal .main-checkbox {
+        float: left;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        position: relative;
+        margin: 5px 0 0 5px;
+        border: 2px solid #00a5a5;
+    }
+
+        .form-horizontal .main-checkbox label {
+            width: 20px;
+            height: 20px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            cursor: pointer;
+
+        }
+
+            .form-horizontal .main-checkbox label:after {
+                content: "";
+                width: 10px;
+                height: 5px;
+                position: absolute;
+                top: 5px;
+                left: 4px;
+                border: 3px solid #00a5a5;
+                border-top: none;
+                border-right: none;
+                background: transparent;
+                opacity: 0;
+                -webkit-transform: rotate(-45deg);
+                transform: rotate(-45deg);
+            }
+
+        .form-horizontal .main-checkbox input[type=checkbox] {
+            visibility: hidden;
+
+        }
+
+            .form-horizontal .main-checkbox input[type=checkbox]:checked + label:after {
+                opacity: 1;
+            }
+
+    .form-horizontal .text {
+        float: left;
+        margin-left: 7px;
+        line-height: 20px;
+        padding-top: 5px;
+        text-transform: capitalize;
+    }
+
+    .form-horizontal .btn {
+        float: right;
+        font-size: 14px;
+        color: #fff;
+        /*background: #00a5a5;*/
+        background: -webkit-linear-gradient(#33AABB, #33C9D0); /* Safari 5.1 - 6.0 */
+        background: -o-linear-gradient(#33AABB, #33C9D0); /* Opera 11.1 - 12.0 */
+        background: -moz-linear-gradient(#33AABB, #33C9D0); /* Firefox 3.6 - 15 */
+        background: linear-gradient(#33AABB, #33C9D0); /* 标准的语法 */
+        border-radius: 30px;
+        padding: 8px 25px;
+        border: none;
+        text-transform: capitalize;
+        transition: all 0.5s ease 0s;
+    }
+
+.validationHints {
+    text-align: left;
+    margin: 5px 0 0 25px;
+}

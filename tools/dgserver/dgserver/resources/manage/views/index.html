@@ -1,0 +1,580 @@
+﻿<!doctype html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TECHMARS</title>
+    <link rel="stylesheet" href="../resources/css/reset.css">
+    <link rel="stylesheet" href="../resources/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="../resources/font/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../resources/css/style.css">
+    <link rel="stylesheet" href="../resources/css/tabPanel.css" />
+    <link rel="stylesheet" href="../resources/css/Login.css" />
+    <link rel="stylesheet" href="../resources/css/Loading.css" />
+    <link rel="stylesheet" href="../resources/css/confirm-animate.css" />
+    <link rel="stylesheet" href="../resources/css/indexmodal.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
+    <script type="text/javascript" src="../resources/js/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="../resources/bootstrap/js/bootstrap.js"></script>
+    <script type="text/javascript" src="../System/Assembly.js"></script>
+    <script type="text/javascript" src="../resources/js/global.js"></script>
+    <script type="text/javascript" src="../resources/js/confirm.js"></script>
+    <script type="text/javascript" src="../resources/js/main.js"></script>
+    <script type="text/javascript" src="../system/Net/WebSocketClient.js"></script>
+    <script type="text/javascript" src="../System/Globalization/Chinese2Spell.js"></script>
+    <script type="text/javascript" src="../resources/js/bootstrap-typeahead.js"></script>
+    <script type="text/javascript" src="../resources/js/VerificationForm.js"></script>
+    <script type="text/javascript" src="../resources/js/requestControllers.js"></script>
+    <style>
+        .index-box {
+            min-width: 1200px;
+        }
+
+        .prompt-box {
+            color: #00a5a5;
+            font-weight: 600;
+            font-size: 18px;
+        }
+
+        .LinkInfo {
+            color: #ff6a00;
+            font-size: 18px;
+            margin-left: 30px;
+        }
+
+        .tooltip {
+            background: -webkit-linear-gradient(#33AABB, #33C9D0); /* Safari 5.1 - 6.0 */
+            background: -o-linear-gradient(#33AABB, #33C9D0); /* Opera 11.1 - 12.0 */
+            background: -moz-linear-gradient(#33AABB, #33C9D0); /* Firefox 3.6 - 15 */
+            background: linear-gradient(#33AABB, #33C9D0); /* 标准的语法 */
+            border-radius: 15px;
+            font-size: 13px;
+        }
+
+        .tooltip-inner {
+            background: rgba(0,0,0,0);
+            color: #fff;
+        }
+
+        .tooltip.top .tooltip-arrow {
+            border-top-color: #fff;
+        }
+
+        .loadPrompt {
+            position: fixed;
+            right: 10px;
+            bottom: 5px;
+            font-size: 20px;
+            color: #00a5a5;
+            font-weight: bold;
+            letter-spacing: 0.1em;
+        }
+
+        .Cancellation {
+            font-size: 13px;
+            margin-left: 10px;
+            color: #00a5a5;
+            cursor: pointer;
+            margin-top: 5px;
+        }
+
+            .Cancellation:hover {
+                color: #0bd2d2;
+                text-decoration: underline;
+            }
+
+        #PickNo {
+            margin-top: 19px;
+            margin-left: 120px;
+            color: #fff;
+            font-size: 16px;
+            border-radius: 5px;
+            /*width: 75px;
+            height: 75px;*/
+            background: -webkit-gradient(linear, left top, left bottom, from(#015f5f), to(#108586) );
+            text-shadow: 0 1px 0 rgba(0,0,0,0.4);
+            -moz-box-shadow: 0 0 .05em rgba(0,0,0,0.4);
+            -webkit-box-shadow: 0 0 0.05em rgba(0,0,0,0.4);
+            border: 1px solid rgba(0, 0, 0, 0.3);
+            outline: none;
+        }
+    </style>
+</head>
+<body class="menu-open">
+    <div class="loading-box">
+        <div class="spinner">
+            <div class="spinner-container container1">
+                <div class="circle1"></div>
+                <div class="circle2"></div>
+                <div class="circle3"></div>
+                <div class="circle4"></div>
+            </div>
+            <div class="spinner-container container2">
+                <div class="circle1"></div>
+                <div class="circle2"></div>
+                <div class="circle3"></div>
+                <div class="circle4"></div>
+            </div>
+            <div class="spinner-container container3">
+                <div class="circle1"></div>
+                <div class="circle2"></div>
+                <div class="circle3"></div>
+                <div class="circle4"></div>
+            </div>
+        </div>
+        <div id="LoadingPrompt" style="width:100%;text-align:center;height:100vh;line-height:120vh;">
+
+        </div>
+    </div>
+    <div class="htmleaf-container login-box">
+        <header class="header-box">
+            <h1>TECHMARS</h1>
+        </header>
+        <div class="demo form-bg" style="padding: 20px 0;">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-offset-3 col-md-6">
+                        <form class="form-horizontal">
+                            <div class="login-form-group">
+                                <input id="userName" vff="IsEmpty" PromptHead="用户名" data-form-property name="userName" type="text" oninput="this.value=this.value.replace(/^[\u4e00-\u9fa5]{0,}$/g,'');" class="form-control" placeholder="用户名">
+                                <p class="validationHints"></p>
+                                <i class="fa fa-user"></i>
+                            </div>
+                            <div class="login-form-group help">
+                                <input id="pwd" vff="IsEmpty" PromptHead="密码" data-form-property name="pwd" type="password" class="form-control" placeholder="密　码">
+                                <p class="validationHints"></p>
+                                <i class="fa fa-lock"></i>
+                                <a href="#" data-toggle="tooltip" class="fa fa-question-circle" title="如忘记密码,请联系管理员账号修改密码!"></a>
+                            </div>
+                            <div class="login-form-group">
+                                <div class="main-checkbox">
+                                    <input type="checkbox" value="None" id="checkbox1" name="check" />
+                                    <label for="checkbox1"></label>
+                                </div>
+                                <span class="text">记住密码</span>
+                                <span class="prompt-box"></span>
+                                <div id="submit" class="btn btn-default">登录</div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="loadPrompt"></div>
+    </div>
+    <div class="toolbar">
+        <i id="min" class="icon iconfont icon-zuixiaohua"></i>
+        <i id="w-tab" class="icon iconfont icon-zuidahua" style="display:none"></i>
+        <i id="close" class="icon iconfont icon-guanbi"></i>
+    </div>
+    <div class="index-box" style="display:none">
+        <div class="toolbar-wrap">
+            <div class="adapt flex-box">
+                <div class="toolbar-move logo">
+                    <img src="../resources/images/logo.png" />TECHMARS
+                </div>
+                <nav class="active">
+                    <ul id="tabs-nav" class="nav nav-tabs">
+                        <!--<li id="tab_home" data-iframe="Frame_home">
+                            <a href="#home_home" data-toggle="tab" style="cursor: pointer; text-align:center" ondragstart="return false">
+                                <p>
+                                    <i class="fa fa-home fa-fw icon_nav"></i>
+                                </p>主页
+                            </a>
+                        </li>-->
+                        <li id="tab_Terminal" data-iframe="Frame_Terminal" class="active">
+                            <a href="#Terminal" data-toggle="tab" style="cursor: pointer; text-align:center" ondragstart="return false">
+                                <p>
+                                    <i class="fa fa-sitemap fa-fw icon_nav"></i>
+                                </p>终端管理
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+        <div class="search-wrap flex-box">
+            <div class="user-info adapt">
+                <span id="UserName" class="user-name">XXX</span>&nbsp;&nbsp;&nbsp;&nbsp;
+                欢迎登陆！&nbsp;&nbsp;
+                <span class="NowTime"> 2017年11月1号 18:35</span>
+                <span class="Cancellation" style="">退出登陆</span>
+                <span class="LinkInfo" style="display:none"></span>
+            </div>
+            <div class="search flex-box">
+                <input type="text" class="adapt" id="search" data-provide="typeahead" data-items="4" />
+                <i class="fa fa-search fa-fw"></i>
+                <i class="fa fa-times fa-fw"></i>
+            </div>
+            <div class="AddBounced">
+                <a href="##" id="AddBounced" title="添加终端"><span class="glyphicon glyphicon-plus"></span></a>
+                <a href="##" id="RefreshData" title="数据刷新" style="font-size: 18px;"><span class="glyphicon glyphicon-refresh"></span></a>
+            </div>
+        </div>
+        <div id="wrapper" class="wrapper active menu-open">
+            <div id="windowLoading" style="height:100%;width:100%;background:#00a5a5;color:#fff;font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;display:none;position:fixed;z-index:10000">
+                <div class="spinner">
+                    <div class="spinner-container container1">
+                        <div class="circle1" style="background:#fff"></div>
+                        <div class="circle2" style="background:#fff"></div>
+                        <div class="circle3" style="background:#fff"></div>
+                        <div class="circle4" style="background:#fff"></div>
+                    </div>
+                    <div class="spinner-container container2">
+                        <div class="circle1" style="background:#fff"></div>
+                        <div class="circle2" style="background:#fff"></div>
+                        <div class="circle3" style="background:#fff"></div>
+                        <div class="circle4" style="background:#fff"></div>
+                    </div>
+                    <div class="spinner-container container3">
+                        <div class="circle1" style="background:#fff"></div>
+                        <div class="circle2" style="background:#fff"></div>
+                        <div class="circle3" style="background:#fff"></div>
+                        <div class="circle4" style="background:#fff"></div>
+                    </div>
+                </div>
+                <div id="2" style="width:100%;text-align:center;height:100vh;line-height:120vh;letter-spacing:10px;font-size:22px;">
+                    加载中,请稍后.......
+                </div>
+            </div>
+            <div class="content">
+                <div class="tabbable" style="list-style: none;">
+                    <ul class="tab-content iframe-content" style="margin:0;"></ul>
+                </div>
+            </div>
+        </div><!-- /wrapper -->
+    </div>
+    <div class="modal fade" id="AddTerminal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog" style="width: 700px; margin-top: 5%;">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="myModalLabel">新增终端</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="lastname" class="col-sm-2 col-xs-2 control-label">终端名称</label>
+                        <div class="col-sm-8 col-xs-8">
+                            <input type="text" id="Mt_DeviceName" class="form-control" name="DeviceName">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="lastname" class="col-sm-2  col-xs-2 control-label">终端类型</label>
+                        <div class="col-sm-8 col-xs-8">
+                            <select type="text" id="Mt_DeviceType" name="DeviceType" class="form-control">
+                                <option value="">请选择</option>
+                                <option value="5">window绵阳放射科专用</option>
+                                <option value="6">windows多功能查询机</option>
+                                <option value="7">windows抽血屏</option>
+                                <option value="8">windows窗口综合屏</option>
+                                <option value="9">window护士站</option>
+                                <option value="10">window大厅等待屏</option>
+                                <option value="11">window医生端</option>
+                                <option value="12">window科室窗口屏</option>
+                                <option value="13">安卓科室窗口屏</option>
+                                <option value="14">安卓抽血屏</option>
+                                <option value="15">安卓医生端</option>
+                                <option value="16">安卓窗口综合屏</option>
+                                <option value="17">安卓大厅等待屏</option>
+                                <option value="18">护士站</option>
+                                <option value="19">安卓多功能查询机</option>
+                                <option value="20">安卓绵阳放射科专用</option>
+                            </select>
+                        </div>
+                    </div>
+                    <!--<div class="form-group">
+                        <label for="lastname" class="col-xs-2 col-sm-2 col-md-2 col-lg-2 control-label">终端模板</label>
+                        <div class="col-sm-8 col-xs-8">
+                            <input type="text" id="Mt_Description" name="Region" class="form-control">
+                        </div>
+                    </div>-->
+                    <div class="form-group">
+                        <label for="lastname" class="col-sm-2  col-xs-2 control-label">备注</label>
+                        <div class="col-sm-8  col-xs-8">
+                            <input type="text" id="Mt_Description" name="Description" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">状态：</label>
+                        <div class="col-sm-8  col-xs-8">
+                            <select id="Mt_OnLine" name="OnLine" style="width: 100%;height: 34px;border-radius: 5px;padding-left: 10px;">
+                                <option value='true'>在线</option>
+                                <option value='false' selected>离线</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div class="AddPrompt prompt"></div>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    <button type="button" autofocus id="submitButton" class="btn btn-primary">确认</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal -->
+    </div>
+</body>
+</html>
+<script>
+    var req = null;//请求
+    var isCheck = localStorage.getItem("isCheck"); //是否记住密码
+    var user = localStorage.getItem('user');   //登录用户信息
+    var chinese2spell = null;
+    var form = null;
+    var timer1 = null;
+    var timer2 = null;
+
+    if (user) {
+        user = user.split(",");
+        $("#userName").val(user[0]);
+        $("#pwd").val(user[1]);
+        if (isCheck.toString() == "true") {
+            $("#checkbox1")[0].checked = true;
+        }
+    } else {
+        user = [];
+    }
+
+    //是否记住密码
+    $("#checkbox1").change(function (e) {
+        isCheck = e.target.checked;
+    });
+
+    //添加新设备
+    $('#AddBounced').click(function () {
+        $('#AddTerminal').modal();
+        $('.AddPrompt').html('');
+        $('#submitButton').removeAttr('disabled');
+        var Mt_selector = $('#AddTerminal').find('input[id^=Mt_],select[id^=Mt_]');
+        Mt_selector.val('');
+    });
+    //确认添加
+    $('#submitButton').click(function () {
+        $(this).attr('disabled', true);
+        var that = this;
+        var params = {};
+        var Mt_selector = $('#AddTerminal').find('input[id^=Mt_],select[id^=Mt_]');
+        for (var i = 0; i < Mt_selector.length; i++) {
+            var val = Mt_selector[i].value;
+            var name = $(Mt_selector[i]).attr('name');
+            if (val.length <= 0) {
+                $('.AddPrompt').html('请输入完整信息！').show();
+                $(that).removeAttr('disabled');
+                return;
+            }
+            params[name] = val;
+        }
+        requestList.TerminalControllerRequest.Add(params, function (errno, response) {
+            console.log(errno, response);
+            var self = this.GetWebSocket();
+            $(that).removeAttr('disabled');
+            if (self.ERROR_NO == errno) {
+                if (response.Tag) {
+                    var id = response.Tag.TerminalId;
+                    InfoCacheList.TerminaManageList[id] = response.Tag;
+                }
+                var iframe = $("#Frame_Terminal")[0];
+                invokeMethod(iframe, 'RefreshData', [], function (result) { });
+                $('#AddTerminal').modal('hide');
+                PromptBox(response.Message);
+            } else {
+                console.error('timeout');
+                PromptBox('网络超时！');
+            }
+        }, 5);
+    });
+    //搜索
+    $('#search').typeahead({    //搜索
+        minLength: 1,
+        labeler: ['DepartmentName'],
+        propName: ['DepartmentName', 'DeviceName', 'ProjectName', 'NickName', 'CustomerName', "PhoneNumber", "Name", "ExamId"],
+        showType: 'DepartmentName',
+        source: source,
+        callback1: function () {
+            var iframe = $(".tab-pane.active").find("iframe")[0];
+            invokeMethod(iframe, 'Reduction', '', function (result) { });
+        },
+        callback2: function (node, row) {
+            var iframe = $(".tab-pane.active").find("iframe")[0];
+            invokeMethod(iframe, 'SearchCallBack', row, function (result) { });
+        }
+    });
+    function source() { //搜索数据
+        var data, iframe = $(".tab-pane.active").find("iframe")[0], labeler, showType;
+        if (!iframe) {
+            return [];
+        }
+
+        if (iframe.id == 'Frame_SystemSettings_QueueSetting') {
+            return [];
+        } else {
+            data = iframe.contentWindow.Source().source;
+            this.labeler = iframe.contentWindow.Source().labeler;
+            this.showType = iframe.contentWindow.Source().showType;
+            return data;
+        }
+    }
+
+    //刷新数据
+    $("#RefreshData").click(function () { 
+        isRefresh = true;
+        TerminalGetAll(0)
+    });
+
+    window.onload = function () {
+        //阻止鼠标右键默认事件
+        document.oncontextmenu = function () {
+            return false;
+        }
+        var request = GetRequest();
+        LoadWebSocket(request.WSServer);
+
+        $("#tabs-nav>li").click(function () {   //界面切换
+            id = $(this).attr("id").slice(4);
+            url = id.split("_").join("/") + '.html';
+            addWTabs(id, url, true);
+        })
+
+        $('#pwd,#userName,.login-box').keyup(function (e) {
+            window.event ? window.event.cancelBubble = true : e.stopPropagation();
+            if (e.keyCode == 13) {
+                UserReg();
+            }
+        });
+        
+        $("#submit").click(function () {    //用户登录
+            UserReg();
+        });
+        $('.Cancellation').click(function () {
+            Cancellation('退出成功!正在重新连接服务器...', '是否退出登陆!');
+        });
+        
+
+        window.setInterval(function () {    //时间
+            var myDate = new Date();
+            var second = "";
+            var minute = "";
+            if (myDate.getSeconds().toString().length == 1) {
+                second = "0" + myDate.getSeconds().toString()
+            } else {
+                second = myDate.getSeconds();
+            }
+            if (myDate.getMinutes().toString().length == 1) {
+                minute = "0" + myDate.getMinutes().toString()
+            } else {
+                minute = myDate.getMinutes();
+            }
+            $(".NowTime").html(myDate.getFullYear() + "年" + (myDate.getMonth() + 1) + "月" + myDate.getDate() + '日&nbsp;&nbsp;' + myDate.getHours() + ":" + minute + ":" + second);
+        }, 1000);
+    }
+    function Cancellation(str, title, time) {
+        isLoading = false;
+        isLoadHome = false;
+        method.msg_layer({
+            type: "layerFadeIn",
+            title: "温馨提示",
+            close: "false",
+            content: title,
+            btn: ["取消", "确认"],
+            callBack2: function (that) {
+                that.msg_close();
+                $(".login-box").show();
+                $(".index-box").hide();
+            }
+        });
+    }
+    function UserReg() {
+        form = $.form.get($('.demo.form-bg'), function (type, name, value) { return (value && value !== '') });
+        if (form == null || form.userName == undefined || form.pwd == undefined) {
+            $('.prompt-box').html('用户名和密码不能为空!');
+            return;
+        }
+        if (!form.pwd.indexOf("'")) {
+            $('.prompt-box').html("密码中不能包含“'”!");
+            return
+        }
+        if (form.userName != 'admin') {
+            $('.prompt-box').html("用户名输入错误！");
+            return
+        }
+        if (form.pwd != 'techmars') {
+            $('.prompt-box').html("密码输入错误！");
+            return
+        }
+        if (isCheck != null && isCheck.toString() == "true") {
+            user[0] = form.userName;
+            user[1] = form.pwd;
+            localStorage.setItem("user", user);
+            localStorage.setItem("isCheck", isCheck);
+        } else {
+            localStorage.removeItem("user");
+            localStorage.removeItem("isCheck");
+        }
+        LoadingPrompt('正在登陆...');
+        //$('.loading-box').fadeIn(500);
+        //$('.login-box').slideUp();
+        //$(".index-box").show();
+        isLoading = true;
+        LoadCache();
+    }
+    function LinkInfo(str, type) {
+        if (type == 0) {
+            $('.LinkInfo').html(str);
+            $('.LinkInfo').css('color', '#00a5a5');
+            setTimeout("LinkInfoHide()", 5000);
+        } else {
+            $('.LinkInfo').css('color', '#ff6a00');
+            $('.LinkInfo').html(str);
+            $('.LinkInfo').show();
+        }
+    }
+    function LinkInfoHide() {
+        $('.LinkInfo').fadeOut(1000);
+    }
+
+    $('.toolbar-wrap a').click(function () {
+        var part = $(this).parents('li');
+        var ifrmName = part.attr('data-iframe');
+        var ifrm = document.getElementById(ifrmName);
+        if (ifrm == null) {
+            $('#windowLoading').fadeIn(100);
+        }
+    });
+    function LoadingPrompt(str, time) {
+        var ti = 500;
+        if (time != undefined) {
+            ti = time;
+        }
+        $('#LoadingPrompt').html(str);
+        $('.loading-box').fadeIn(ti);
+    }
+    function LoadingHeid(str) {
+        $('.loading-box').fadeOut(300);
+        $('.loadPrompt').html(str);
+    }
+    function loging() {
+        $('.loading-box').fadeOut(1000);
+        $(".login-box").slideUp();
+        $(".index-box").show();
+        $('#w-tab').show();
+        if (window.external.setWindowState) {
+            $("#w-tab").removeClass("icon-zuidahua").addClass("icon-huanyuan");
+            window.external.setWindowState(2);
+        }
+    }
+    function windowLoadingHide() {
+        $('#windowLoading').fadeOut(200);
+    }
+    function GetRequest() {
+        var url = location.search; //获取url中"?"符后的字串
+        var theRequest = new Object();
+        if (url.indexOf("?") != -1) {
+            var str = url.substr(1);
+            strs = str.split("&");
+            for (var i = 0; i < strs.length; i++) {
+                theRequest[strs[i].split("=")[0]] = (strs[i].split("=")[1]);
+            }
+        }
+        return theRequest;
+    };
+</script>

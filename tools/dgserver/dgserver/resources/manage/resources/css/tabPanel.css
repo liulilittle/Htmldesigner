@@ -1,0 +1,54 @@
+﻿.nav-tabs > li > a,
+.nav-tabs > li > a:hover,
+.nav-tabs > li > a:focus {
+    display: block;
+    height: 100%;
+    margin-top: 0px;
+    margin-right: 0px;
+    border: none;
+    background-color: #00a5a5;
+    border-radius: none;
+    color: #fff;
+    border-radius: 0;
+    padding: 0 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: 14px;
+}
+
+    .nav-tabs > li.active > a,
+    .nav-tabs > li.active > a:focus,
+    .nav-tabs > li.active:hover > a:hover {
+        background: #007e7e;
+        color: #fff;
+        border: none;
+    }
+.nav-tabs > li > a:hover {
+    background: rgba(0,126,126,0.5);
+    color: #fff;
+    border: none;
+}
+        .nav-tabs > li > a > p {
+            padding-top: 10px;
+            margin-bottom: 5px;
+        }
+    
+    .icon_nav {
+        font-size: 30px;
+    }
+
+#tabs-nav {
+    float: left;
+    padding-left: 0px;
+    padding-bottom: 0px;
+    box-shadow: none;
+    border:none;
+    height: 100%;
+    min-width: 590px;
+    margin-left: 94px;
+}
+
+#tabs-nav > li {
+    margin-bottom: 0px;
+    height: 100%;
+}

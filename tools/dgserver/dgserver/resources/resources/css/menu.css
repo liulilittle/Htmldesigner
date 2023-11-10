@@ -1,0 +1,107 @@
+a:hover, a:focus {
+    text-decoration: none;
+    outline: none;
+}
+
+#accordion .panel {
+    border: none;
+    box-shadow: none;
+    border-radius: 0;
+    margin-bottom: -5px;
+}
+
+#accordion .panel-heading {
+    padding: 0;
+    border-radius: 0;
+    border: none;
+    text-align: center;
+}
+
+#accordion .panel-title a {
+    display: block;
+    padding: 10px 30px;
+    font-size: 14px;
+    color: #000;
+    background: #fff;
+    border-bottom: 1px solid #ccc;
+    position: relative;
+    transition: all 0.5s ease 0s;
+}
+
+/*#accordion .panel-title a:hover {
+    background: #4a4a4a;
+}*/
+
+#accordion .panel-title a:after,
+#accordion .panel-title a.collapsed:after {
+    content: "\e080";
+    font-family: 'Glyphicons Halflings';
+    font-size: 12px ;
+    font-weight: 200;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    transform: rotate(90deg);
+    transition: all 0.5s ease 0s;
+}
+
+#accordion .panel-title a.collapsed:after {
+    transform: rotate(0deg);
+}
+.template-source p,
+.controls-list p,
+.data-source p {
+    margin: 0;
+    background: #00a5a5;
+    color: #fff;
+    padding: 10px 20px;
+    border-bottom: 1px solid rgba(256,256,256,0.5);
+}
+
+.Left-template {
+    text-align: center;
+}
+.Left-template-subset {
+    text-align: left;
+    background: #00a5a58c !important;
+    color: #ffffff !important;
+}
+    .controls-list p:last-child,
+    .data-source p:last-child {
+        border-bottom: none;
+    }
+
+.controls-list p a,
+.data-source p a {
+    color: #fff;
+    float: right;
+    font-size: 18px;
+}
+
+#accordion .panel-collapse .panel-body p {
+    opacity: 0;
+    transform: scale(0.9);
+    transition: all 0.5s ease-in-out 0s;
+}
+
+#accordion .panel-collapse.in .panel-body p {
+    opacity: 1
+}
+
+.panel-group-wrap {
+    position: absolute;
+    top: 43px;
+    left: 0;
+    right: 0;
+    bottom: 35px;
+}
+
+.panel-group {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: -20px;
+    bottom: 0;
+    overflow-y: scroll;
+    margin-bottom: 0px !important;
+}

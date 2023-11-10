@@ -1,0 +1,49 @@
+﻿.ComboState {
+    font-size: 16px;
+    color: #00a5a5;
+}
+.modal-content {
+    background-color: #fff;
+}
+
+.modal-body {
+    overflow: hidden;
+}
+
+.modal-body-left,.modal-body-right {
+    float: left;
+    width: 45%;
+    margin-right: 5%;
+}
+
+.modal-body-right {
+    background: #fff;
+    height: 225px;
+    overflow: hidden;
+    border: 1px solid #ccc;
+}
+
+.modal-body-bottom {
+    margin-bottom: 30px;
+}
+
+.projectLists {
+    height: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+    position: relative;
+}
+
+.panel-heading {
+    border-top: none;
+}
+
+.edit-warp {
+    text-align: right;
+    margin-right: 20px;
+}
+
+.panel-title label {
+    font-size: 14px;
+    font-weight: normal;
+}

@@ -1,0 +1,47 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="../resources/css/reset.css">
+    <link rel="stylesheet" href="../resources/font/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../resources/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="../resources/css/style.css">
+    <link rel="stylesheet" href="../resources/css/bootstrap-table.css" />
+    <link rel="stylesheet" href="../resources/iconfont/iconfont.css" />
+    <link rel="stylesheet" href="../resources/daterangepicker/daterangepicker.css" />
+    <script type="text/javascript" src="../resources/js/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="../resources/js/contextMenu.js"></script>
+    <script type="text/javascript" src="../resources/bootstrap/js/bootstrap.js"></script>
+    <script type="text/javascript" src="../System/Assembly.js"></script>
+    <script type="text/javascript" src="../resources/js/global.js"></script>
+    <script type="text/javascript" src="../resources/js/bootstrap-table.js"></script>
+    <script type="text/javascript" src="../resources/daterangepicker/moment.js"></script>
+    <script type="text/javascript" src="../resources/daterangepicker/daterangepicker.js"></script>
+    <script type="text/javascript" src="../resources/bootstrap/js/bootstrap-select.js"></script>
+    <script type="text/javascript" src="../resources/js/main.js"></script>
+    <script type="text/javascript" src="../resources/echarts/echarts.min.js"></script>
+    <style>
+        #canvas {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+	<div class="home-content content-wrap">
+        <div id="canvas"></div>
+	</div>
+</body>
+</html>
+
+<script>
+    $(function () {
+        //阻止鼠标右键默认事件
+        document.oncontextmenu = function (e) {
+            e.preventDefault();
+        };
+        window.top.frames.windowLoadingHide();
+        window.top.frames.LoadingHeid();
+    });
+</script>

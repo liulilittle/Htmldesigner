@@ -1,0 +1,969 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <link rel="stylesheet" href="../resources/css/reset.css">
+    <link rel="stylesheet" href="../resources/font/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../resources/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="../resources/css/style.css">
+    <link rel="stylesheet" href="../resources/css/bootstrap-table.css" />
+    <link rel="stylesheet" href="../resources/css/confirm-animate.css" />
+    <link rel="stylesheet" href="../resources/bootstrap/css/bootstrap-switch.css" />
+    <link rel="stylesheet" href="../resources/bootstrap/css/bootstrap-select.css" />
+    <link rel="stylesheet" href="../resources/daterangepicker/bootstrap-datetimepicker.css" />
+    <script type="text/javascript" src="../resources/js/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="../System/Assembly.js"></script>
+    <script type="text/javascript" src="../System/Globalization/Chinese2Spell.js"></script>
+    <script type="text/javascript" src="../resources/js/global.js"></script>
+    <script type="text/javascript" src="../resources/bootstrap/js/bootstrap.js"></script>
+    <script type="text/javascript" src="../resources/js/bootstrap-table.js"></script>
+    <script type="text/javascript" src="../resources/bootstrap/js/bootstrap-switch.js" charset="gbk"></script>
+    <script type="text/javascript" src="../resources/bootstrap/js/bootstrap-select.js" charset="gbk"></script>
+    <script type="text/javascript" src="../resources/js/main.js"></script>
+    <script type="text/javascript" src="../resources/js/confirm.js"></script>
+    <script type="text/javascript" src="../resources/daterangepicker/bootstrap-datetimepicker.js"></script>
+    <script type="text/javascript" src="../resources/daterangepicker/bootstrap-datetimepicker.zh-CN.js"></script>
+    <style>
+        #HistoryModal .modal-content {
+            background-color: #f5f5f5;
+        }
+    </style>
+</head>
+<body>
+    <div class="content-wrap">
+        <div class="tool-box" style="margin-bottom: 15px;">
+            <button class="btn TurnOn" data-type="0"><i class="fa fa-circle-o-notch" aria-hidden="true"></i>&nbsp;&nbsp;一键开机</button>&nbsp;&nbsp;
+            <button class="btn TurnOff" data-type="1"><i class="fa fa-power-off" aria-hidden="true"></i>&nbsp;&nbsp;一键关机</button>
+            <button class="btn fr TimeSet"><i class="fa fa-cog" aria-hidden="true"></i>&nbsp;&nbsp;定时开关机设置</button>
+            <button class="btn fr RelTemp" style="margin-right: 10px;"><i class="fa fa-outdent" aria-hidden="true"></i>&nbsp;&nbsp;批量发布</button>
+        </div>
+        <div class="table-header">
+            <div class="table-header-wrap">
+                <table id="departTable"></table>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="EditTerminal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog" style="width: 500px;">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="myModalLabel">终端编辑（<span></span>）</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="lastname" class="col-sm-2 col-xs-2 control-label">备注</label>
+                        <div class="col-sm-8 col-xs-8">
+                            <input type="text" id="Mt_Description" class="form-control" name="DepartName">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    <button type="button" autofocus id="submitButton" class="btn btn-primary">确认</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal -->
+    </div>
+    <div class="modal fade" id="HistoryModal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog" style="width: 600px;">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="myModalLabel">历史模板（<span></span>）</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="his-temp-list">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal -->
+    </div>
+    <div class="modal fade" id="TimeModal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog" style="width: 600px;">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="myModalLabel">定时开关机设置</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="name" class="col-sm-2  col-xs-2 control-label">选择终端</label>
+                        <div class="col-sm-9  col-xs-9">
+                            <select id="Mt_TimeItems" class="Mt_TestItems selectpicker Multiselect" multiple data-live-search="true" data-active-box="true"></select>
+                        </div>
+                    </div>
+                    <form style="padding: 10px 0 30px 0;text-align:center;">
+                        <input type="radio" name="way" id="day" checked />
+                        <label for="day">天循环</label>&nbsp;&nbsp;&nbsp;
+                        <input type="radio" name="way" id="week" />
+                        <label for="week">周循环</label>
+                    </form>
+
+                    <div class="day_time_box">
+                        <div class="form-group">
+                            <label for="lastname" class="col-sm-2 col-xs-2 control-label">时间：</label>
+                            <div class="col-sm-3 col-xs-3">
+                                <input type="text" value="8:00" class="form-control" name="StartTime">
+                            </div>
+                            <div class="fl">&nbsp;&nbsp;-&nbsp;&nbsp;</div>
+                            <div class="col-sm-3 col-xs-3">
+                                <input type="text" value="18:00" class="form-control" name="EndTime">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="week_time_box" style="display:none;">
+                        <div class="form-group">
+                            <label for="lastname" class="col-sm-2 col-xs-2 control-label">周一：</label>
+                            <div class="col-sm-3 col-xs-3">
+                                <input type="text" value="8:00" class="form-control" name="StartTime" data-num="1">
+                            </div>
+                            <div class="fl">&nbsp;&nbsp;-&nbsp;&nbsp;</div>
+                            <div class="col-sm-3 col-xs-3">
+                                <input type="text" value="18:00" class="form-control" name="EndTime" data-num="1">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="lastname" class="col-sm-2 col-xs-2 control-label">周二：</label>
+                            <div class="col-sm-3 col-xs-3">
+                                <input type="text" value="8:00" class="form-control" name="StartTime" data-num="2">
+                            </div>
+                            <div class="fl">&nbsp;&nbsp;-&nbsp;&nbsp;</div>
+                            <div class="col-sm-3 col-xs-3">
+                                <input type="text" value="18:00" class="form-control" name="EndTime" data-num="2">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="lastname" class="col-sm-2 col-xs-2 control-label">周三：</label>
+                            <div class="col-sm-3 col-xs-3">
+                                <input type="text" value="8:00" class="form-control" name="StartTime" data-num="3">
+                            </div>
+                            <div class="fl">&nbsp;&nbsp;-&nbsp;&nbsp;</div>
+                            <div class="col-sm-3 col-xs-3">
+                                <input type="text" value="18:00" class="form-control" name="EndTime" data-num="3">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="lastname" class="col-sm-2 col-xs-2 control-label">周四：</label>
+                            <div class="col-sm-3 col-xs-3">
+                                <input type="text" value="8:00" class="form-control" name="StartTime" data-num="4">
+                            </div>
+                            <div class="fl">&nbsp;&nbsp;-&nbsp;&nbsp;</div>
+                            <div class="col-sm-3 col-xs-3">
+                                <input type="text" value="18:00" class="form-control" name="EndTime" data-num="4">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="lastname" class="col-sm-2 col-xs-2 control-label">周五：</label>
+                            <div class="col-sm-3 col-xs-3">
+                                <input type="text" value="8:00" class="form-control" name="StartTime" data-num="5">
+                            </div>
+                            <div class="fl">&nbsp;&nbsp;-&nbsp;&nbsp;</div>
+                            <div class="col-sm-3 col-xs-3">
+                                <input type="text" value="18:00" class="form-control" name="EndTime" data-num="5">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="lastname" class="col-sm-2 col-xs-2 control-label">周六：</label>
+                            <div class="col-sm-3 col-xs-3">
+                                <input type="text" value="8:00" class="form-control" name="StartTime" data-num="6">
+                            </div>
+                            <div class="fl">&nbsp;&nbsp;-&nbsp;&nbsp;</div>
+                            <div class="col-sm-3 col-xs-3">
+                                <input type="text" value="18:00" class="form-control" name="EndTime" data-num="6">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="lastname" class="col-sm-2 col-xs-2 control-label">周日：</label>
+                            <div class="col-sm-3 col-xs-3">
+                                <input type="text" value="8:00" class="form-control" name="StartTime" data-num="7">
+                            </div>
+                            <div class="fl">&nbsp;&nbsp;-&nbsp;&nbsp;</div>
+                            <div class="col-sm-3 col-xs-3">
+                                <input type="text" value="18:00" class="form-control" name="EndTime" data-num="7">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    <button type="button" autofocus id="SetTime" class="btn btn-primary">确认</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal -->
+    </div>
+    <div class="modal fade" id="ReleaseModal" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                        &times;
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel">
+                        发布<span></span>
+                    </h4>
+                </div>
+                <form class="modal-body release_form">
+                    <div class="form-group">
+                        <label for="name" class="col-sm-3 control-label">选择终端：</label>
+                        <div class="col-sm-8">
+                            <select id="Mt_RelItems" class="Mt_TestItems selectpicker Multiselect" multiple data-live-search="true" data-active-box="true"></select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">所属分组：</label>
+                        <div class="col-sm-8">
+                            <select name="gcode" style="width: 100%;height: 34px;border-radius: 5px;padding-left: 10px;"></select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">视图名称：</label>
+                        <div class="col-sm-8">
+                            <select name="querycode" style="width: 100%;height: 34px;border-radius: 5px;padding-left: 10px;"></select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">发布方式：</label>
+                        <div class="col-sm-8">
+                            <select name="modelType" style="width: 100%;height: 34px;border-radius: 5px;padding-left: 10px;">
+                                <option value='0'>在线</option>
+                                <option value='1' selected>离线</option>
+                                <option value='2'>分诊</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">发布URL：</label>
+                        <div class="col-sm-8">
+                            <input type="text" name="release_tex" class="form-control" placeholder="请输入URL">
+                        </div>
+                    </div>
+                </form>
+                <div class="modal-footer">
+                    <div class="progressbar prompt" style="display: block;"></div>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">
+                        关闭
+                    </button>
+                    <button type="button" class="btn btn-primary release-btn">
+                        发布
+                    </button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal -->
+    </div>
+    <div class="modal fade" id="SetTerminal" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                        &times;
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel">
+                        终端设置
+                    </h4>
+                </div>
+                <form class="modal-body release_form">
+                    <div class="form-group">
+                        <label for="name" class="col-sm-3 control-label">选择终端：</label>
+                        <div class="col-sm-8">
+                            <select id="Mt_SetItems" class="Mt_TestItems selectpicker Multiselect" multiple data-live-search="true" data-active-box="true"></select>
+                        </div>
+                    </div>
+                    <div class="form-group form-light">
+                        <label class="col-sm-3 control-label">亮度设置：</label>
+                        <div class="col-sm-8">
+                            <input type="number" id="Mt_Light" class="form-control" min="0" max="255" step="1" value="0" placeholder="亮度(0-255)">
+                        </div>
+                    </div>
+                    <div class="form-group form-voice">
+                        <label class="col-sm-3 control-label">音量设置：</label>
+                        <div class="col-sm-8">
+                            <input type="number" id="Mt_Voice" class="form-control" min="0" max="13" step="1" value="0" placeholder="音量(0-13)">
+                        </div>
+                    </div>
+                </form>
+                <div class="modal-footer">
+                    <div class="setbar prompt" style="display: block;"></div>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">
+                        关闭
+                    </button>
+                    <button type="button" class="btn btn-primary set-btn">
+                        确定
+                    </button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal -->
+    </div>
+</body>
+</html>
+
+<script>
+    var reqset = window.top.frames.requestList;
+    var InfoCacheList = window.top.frames.InfoCacheList;
+    var way = 0;
+    var TempList = [];
+    $(function () {
+        window.top.frames.windowLoadingHide();
+        window.top.frames.LoadingHeid();
+
+        
+        LoadTempList();
+        LoadTerminalSelect(InfoCacheList.TerminaList);
+        $('#departTable').bootstrapTable({
+            dataType: "json",
+            cache: false,
+            striped: true,
+            pagination: true,
+            pageNumber: 1,
+            nowPageSize: function () {
+                var H = $(".content-wrap").height() - 80;
+                return Math.floor(H / 37) - 1;
+            },
+            data: InfoCacheList.TerminaList,
+            columns: [
+                {
+                    field: "id",
+                    title: "序号",
+                    minwidth: 100,
+                    whitespace: "nowrap",
+                    formatter: function (value, row, index) {
+                        return index + 1;
+                    }
+                },
+                { field: "TerminalId", title: "终端编号", width: 150, whitespace: "nowrap" },
+                { field: "DeviceName", title: "终端名称", width: 300, whitespace: "nowrap" },
+                {
+                    field: "DeviceType", title: "终端类型", width: 150, whitespace: "nowrap", formatter: function (value, row, index) {
+                        switch (value) {
+                            case 5:
+                                return "window绵阳放射科专用";
+                            case 6:
+                                return "windows多功能查询机";
+                            case 7:
+                                return "windows抽血屏";
+                            case 8:
+                                return "windows窗口综合屏";
+                            case 9:
+                                return "windows护士站";
+                            case 10:
+                                return "windows大厅等待屏";
+                            case 11:
+                                return "windows医生端";
+                            case 12:
+                                return "Windows科室窗口屏";
+                            case 13:
+                                return "安卓科室窗口屏";
+                            case 14:
+                                return "安卓抽血屏";
+                            case 15:
+                                return "安卓医生端";
+                            case 16:
+                                return "安卓窗口综合屏";
+                            case 17:
+                                return "安卓大厅等待屏";
+                            case 18:
+                                return "护士站";
+                            case 19:
+                                return "安卓多功能查询机";
+                            case 20:
+                                return "安卓绵阳放射科专用";
+                            default:
+                                return '';
+                        }
+                    }
+                },
+                { field: "Description", title: "备注", width: 150, whitespace: "nowrap" },
+                { field: "IP", title: "IP", width: 150, whitespace: "nowrap" },
+                { field: "VoiceState", title: "音量", width: 100, whitespace: "nowrap" },
+                { field: "LightState", title: "亮度", width: 100, whitespace: "nowrap" },
+                {
+                    field: "OnLine", title: "终端状态", width: 100, whitespace: "nowrap", formatter: function (value, row, index) {
+                        if (value) {
+                            return '在线';
+                        } else {
+                            return '离线';
+                        }
+                    }
+                },
+                {
+                    field: "ScreenState", title: "开关机", width: 100, whitespace: "nowrap", formatter: function (value, row, index) {
+                        if (value) {
+                            return '开机';
+                        } else {
+                            return '关机';
+                        }
+                    }
+                },
+                {
+                    field: "Button",
+                    title: "操作",
+                    minwidth: 100,
+                    whitespace: "nowrap",
+                    formatter: function (value, row, index) {
+                        return [
+                            '<a href="##" id="TableEditor" title="编辑" style="padding-right:10px;"><span class="fa fa-edit" data-toggle="modal"></span></a>',
+                            '<a href="##" id="TableVoice" title="音量设置" style="padding-right:10px;"><span class="fa fa-volume-up" data-toggle="modal"></span></a>',
+                            '<a href="##" id="TableLight" title="亮度设置" style="padding-right:10px;"><span class="fa fa-sun-o" data-toggle="modal"></span></a>',
+                            '<a href="##" id="TableShot" title="截图" style="padding-right:10px;"><span class="fa fa-crop" data-toggle="modal"></span></a>',
+                            '<a href="##" id="TableRelease" title="发布" style="padding-right:10px;"><span class="fa fa-paper-plane" data-toggle="modal"></span></a>',
+                            '<a href="##" id="TableHistory" title="历史记录" style="padding-right:10px;"><span class="fa fa-list-alt" data-toggle="modal"></span></a>',
+                            '<a href="##" id="TableRestart" title="终端重启" style="padding-right:10px;"><span class="fa fa-spinner" data-toggle="modal"></span></a>',
+                            '<a href="##" id="TableTurnOnOff" title="终端开关机" style="padding-right:10px;"><span class="fa fa-power-off" data-toggle="modal"></span></a>',
+                            '<a href="##" id="TableDelete" title="删除"><span class="fa fa-times-circle" data-toggle="modal"></span></a>'
+                        ].join("");
+                    },
+                    events: {
+                        'click #TableEditor': function (e, value, row, index) {
+                            $("#EditTerminal").find('h4 span').html(row.DeviceName);
+                            EditTerminal(row, index);
+                        },
+                        'click #TableVoice': function (e, value, row, index) {
+                            $(".form-light").hide();
+                            $(".form-voice").show();
+                            $("#Mt_Voice").val(row.VoiceState);
+                            SetType(row, 1);
+                        },
+                        'click #TableLight': function (e, value, row, index) {
+                            $(".form-light").show();
+                            $(".form-voice").hide();
+                            $("#Mt_Light").val(row.Light);
+                            SetType(row, 2);
+                        },
+                        'click #TableShot': function (e, value, row, index) {
+                            var that = this;
+                            $(that).attr('disabled', true);
+                            reqset.TerminalControllerRequest.VoiceSet({
+                                TerminalList: [row.TerminalId],
+                                type: 3,
+                            }, function (errno, response) {
+                                console.log(errno, response);
+                                var self = this.GetWebSocket();
+                                $(that).removeAttr('disabled');
+                                if (self.ERROR_NO == errno) {
+                                    PromptBox(response.Message);
+                                    if (response.Tag) {
+                                        window.open(response.Tag);
+                                    }
+                                } else {
+                                    console.error('timeout');
+                                    PromptBox('网络超时！');
+                                }
+                            }, 5);
+                        },
+                        'click #TableRestart': function (e, value, row, index) {
+                            $(".form-light").hide();
+                            $(".form-voice").hide();
+                            SetType(row, 0);
+                        },
+                        'click #TableRelease': function (e, value, row, index) {
+                            $('#ReleaseModal').modal().data('row', row);
+                            $("#ReleaseModal").find('h4 span').html('（'+row.DeviceName+'）');
+                            $('.release-btn').removeAttr('disabled');
+                            $('#Mt_RelItems').selectpicker('val', row.DeviceName);
+                            $('#Mt_RelItems').selectpicker('refresh');
+                        },
+                        'click #TableHistory': function (e, value, row, index) {
+                            LookHistory(row, index);
+                        },
+                        'click #TableTurnOnOff': function (e, value, row, index) {
+                            var txt = '',
+                                state,
+                                arr = [];
+                            arr.push(row.TerminalId);
+                            if (row.ScreenState) {
+                                txt = "是否关闭 [ " + row.DeviceName + " ] 终端？";
+                                state = 1;
+                            } else {
+                                txt = "是否开启 [ " + row.DeviceName + " ] 终端？";
+                                state = 0;
+                            }
+                            method.msg_layer({
+                                type: "layerFadeIn",
+                                title: "温馨提示",
+                                close: "true",
+                                content: txt,
+                                btn: ["取消", "确认"],
+                                callBack2: function () {
+                                    TurnOnOff(state, arr);
+                                }
+                            });
+                        },
+                        'click #TableDelete': function (e, value, row, index) {
+                            method.msg_layer({
+                                type: "layerFadeIn",
+                                title: "温馨提示",
+                                close: "true",
+                                content: "是否删除 [ " + row.DeviceName + " ] 终端!",
+                                btn: ["取消", "确认"],
+                                callBack2: function () {
+                                    DelectDepartment(row);
+                                }
+                            });
+                        }
+                    }
+                }
+            ],
+            onClickRow: function (item, dom) {
+                //console.log(item, dom);
+            },
+            formatShowingRows: function (pageFrom, pageTo, totalRows) {
+                if (totalRows <= 0) {
+                    pageTo = 1;
+                }
+                return '显示第 ' + pageFrom + ' 到 ' + pageTo + ' 条记录，总共 ' + totalRows + ' 条记录';
+            },
+            formatNoMatches: function () {
+                return '<div><span class="glyphicon glyphicon-info-sign" style="top: 2px; right: 2px; color: rgb(68, 157, 68);"></span> 无符合条件的记录！</div>';
+            },
+            formatLoadingMessage: function () {
+                return '<div class="nullData">正在加载，请稍后...</div>';
+            },
+            formatRecordsPerPage: function () {
+                return '';
+            }
+        });
+
+        $('.selectpicker').selectpicker({
+            'selectedText': 'cat',
+            'selectAllText': '全选'
+        });
+
+        //定时开关机时间设置
+        $('.TimeSet').click(function () {
+            $('input[name=StartTime]').val("08:00");
+            $('input[name=EndTime]').val("18:00");
+            $('#SetTime').removeAttr('disabled');
+            $('#TimeModal').modal();
+            $('.Mt_TestItems').selectpicker('val', []);
+            $('.Mt_TestItems').selectpicker('refresh');
+        });
+        $("#day").change(function () {
+            if (this.checked) {
+                way = 0;
+                $('.week_time_box').hide();
+                $('.day_time_box').show();
+            }
+        });
+        $('#week').change(function () {
+            if (this.checked) {
+                way = 1;
+                $('.day_time_box').hide();
+                $('.week_time_box').show();
+            }
+        });
+        $('input[name=StartTime],input[name=EndTime]').datetimepicker({
+            autoclose: true,
+            language: 'zh-CN',
+            bootcssVer: 3,
+            startView: 1,
+            minuteStep: 3,
+            //initialDate: '08:00',
+            format: 'hh:ii'
+        });
+        $('#SetTime').click(function () {
+            $(this).attr('disabled', true);
+            var list = [];
+            var obj = {};
+            if (way == 0) {
+                obj.Date = 0;
+                obj.StartTime = $('.day_time_box').find('input[name=StartTime]').val();
+                obj.EndTime = $('.day_time_box').find('input[name=EndTime]').val();
+                list.push(obj);
+            }
+
+            if (way == 1) {
+                var input = $('.week_time_box').find('input');
+                for (var i = 0; i < input.length; i++) {
+                    var num = $(input[i]).attr('data-num');
+                    var field = $(input[i]).attr('name');
+                    var val = input[i].value;
+                    if (list[num-1]) {
+                        list[num-1][field] = val;
+                    } else {
+                        obj.Date = num;
+                        obj[field] = val;
+                        list.push(obj);
+                    }
+                }
+            }
+            SetTime(list);
+        });
+
+        //
+        $("select[name=gcode]").change(function () {
+            var code = $(this).val();
+            for (var i = 0; i < TempList.length; i++) {
+                if (code == TempList[i].gcode) {
+                    var list = TempList[i].views;
+                    var sel = $("select[name=querycode]");
+                    sel.empty();
+                    if (list && list.length) {
+                        for (var j = 0; j < list.length; j++) {
+                            sel.append('<option value="' + list[j].querycode + ',' + list[j].viewid + ',' + list[j].viewname + '">' + list[j].viewname + '</option>');
+                        }
+                    }
+                }
+            }
+        });
+
+        //发布模板
+        $('.release-btn').click(function () {
+            var that = this;
+            var url = $('[name=release_tex]').val();
+            var mode = $('[name=modelType]').val();
+            var terminal = $('[name=querycode]').val().split(',');
+            var list = $("#Mt_RelItems").val();
+            $('.progressbar').html('');
+            $(that).attr('disabled', true);
+            if (mode == '2') {
+                if (url.length <= 0) {
+                    console.log("请输入Url！");
+                    return;
+                }
+            }
+            var params = {
+                ViewId: terminal[1],
+                DeviceName: list,
+                Mode: mode,
+                Url: url,
+                QueryCode: terminal[0]
+            };
+            reqset.TerminalControllerRequest.ViewPulish(params, function (errno, response) {
+                console.log(errno, response);
+                var self = this.GetWebSocket();
+                $(that).removeAttr('disabled');
+                if (self.ERROR_NO == errno) {
+                    PromptBox(response.Message);
+                } else {
+                    console.error('timeout');
+                    PromptBox('网络超时！');
+                }
+            }, 5);
+        });
+
+        //批量发布模板
+        $('.RelTemp').click(function () {
+            $('#ReleaseModal').modal().removeData();
+            $("#ReleaseModal").find('h4 span').html('');
+            $(".release-btn").removeAttr('disabled');
+            $('#Mt_RelItems').selectpicker('val', []);
+            $('#Mt_RelItems').selectpicker('refresh');
+        });
+
+        //修改备注
+        $('#submitButton').click(function () {
+            var that = this;
+            var Description = $("#Mt_Description").val();
+            var name = $('#EditTerminal').data('name');
+            if (Description.length <= 0) {
+                return;
+            }
+            $(this).attr('disabled', true);
+            reqset.TerminalControllerRequest.Update({
+                DeviceName: name,
+                Description: Description
+            }, function (errno, response) {
+                console.log(errno, response);
+                var self = this.GetWebSocket();
+                $(that).removeAttr('disabled');
+                if (self.ERROR_NO == errno) {
+                    if (response.Tag) {
+                        var id = response.Tag.TerminalId;
+                        InfoCacheList.TerminaList[id] = response.Tag;
+                        RefreshData();
+                    }
+                    $('#EditTerminal').modal('hide');
+                    PromptBox(response.Message);
+                } else {
+                    console.error('timeout');
+                    PromptBox('网络超时！');
+                }
+            }, 5);
+        });
+
+
+        //一键开关机
+        $(".TurnOn,.TurnOff").click(function () {
+            $(this).attr('disabled', true);
+            var type = $(this).attr('data-type');
+            TurnOnOff(type);
+        });
+
+        //亮度、音量设置
+        $(".set-btn").click(function () {
+            var that = this;
+            var type = $("#SetTerminal").data('type');
+            var tyle;
+            var list = $("#Mt_SetItems").val();
+            $(".setbar").html('');
+            
+            if (!list) {
+                $(".setbar").html("请选择终端！");
+                return;
+            }
+
+            $(that).attr("disabled", true);
+            if (type == 0) {
+                reqset.TerminalControllerRequest.VoiceSet({
+                    TerminalList: list,
+                    type: type
+                }, function (errno, response) {
+                    console.log(errno, response);
+                    var self = this.GetWebSocket();
+                    $(that).removeAttr('disabled');
+                    if (self.ERROR_NO == errno) {
+                        PromptBox(response.Message);
+                    } else {
+                        console.error('timeout');
+                        PromptBox('网络超时！');
+                    }
+                }, 5);
+                return;
+            }
+
+            if (type == 1) {
+                tyle = $("#Mt_Voice").val();
+            }
+
+            if (type == 2) {
+                tyle = $("#Mt_Light").val();
+            }
+
+            reqset.TerminalControllerRequest.VoiceSet({
+                TerminalList: list,
+                type: type,
+                tyle: tyle
+            }, function (errno, response) {
+                console.log(errno, response);
+                var self = this.GetWebSocket();
+                $(that).removeAttr('disabled');
+                if (self.ERROR_NO == errno) {
+                    PromptBox(response.Message);
+                } else {
+                    console.error('timeout');
+                    PromptBox('网络超时！');
+                }
+            }, 5);
+        });
+    });
+
+
+    //编辑终端
+    function EditTerminal(row, index) {
+        $('#EditTerminal').modal().data('name', row.DeviceName);
+        $('#Mt_Description').val(row.Description);
+        $('#submitButton').removeAttr('disabled');
+    }
+
+    //终端删除
+    function DelectDepartment(row) {    //删除终端
+        reqset.TerminalControllerRequest.Remove({
+            'TerminalId': row.TerminalId
+        }, function (errno, response) {
+            console.log(errno, response);
+            var self = this.GetWebSocket();
+            if (self.ERROR_NO == errno) {
+                if (response.ErrorCode == 0) {
+                    PromptBox(row.DeviceName + "终端，删除成功！");
+                    delete InfoCacheList.TerminaList[row.TerminalId];
+                    RefreshData();
+                } else {
+                    PromptBox(row.DeviceName + response.Message);
+                }
+            } else {
+                PromptBox("网络超时！");
+                console.error('timeout');
+            }
+        }, 5);
+    }
+
+    //搜索
+    function Source() {
+        var obj = {};
+        obj.source = InfoCacheList.TerminaList;
+        obj.labeler = ["DeviceName"];
+        obj.showType = "DeviceName";
+        return obj;
+    }
+    function SearchCallBack(row) {
+        $('#departTable').bootstrapTable("load", row);
+    }
+    function Reduction() {
+        RefreshData();
+    }
+    function RefreshData(params) {    //刷新数据
+
+        var row = $('#ReleaseModal').data('row');
+        if (row) {
+            if (row.TerminalId == params.row.TerminalId) {
+                if (params.row.TerminalDownLoadState)
+                    $('.progressbar').html(params.row.TerminalDownLoadState);
+            }
+        }
+
+
+        if (!params.state) {
+            $('#departTable').bootstrapTable("load", InfoCacheList.TerminaList);
+            return;
+        }
+        var data = $('#departTable').bootstrapTable('getData');
+        var datalen = ObjLen(data);
+        var allen = ObjLen(InfoCacheList.TerminaList);
+        var arr = [];
+
+        if (datalen == 1) {
+            var id = data[0].TerminalId;
+            arr.push(InfoCacheList.TerminaList[id]);
+            $('#departTable').bootstrapTable('load', arr);
+        } else {
+            $('#departTable').bootstrapTable("load", InfoCacheList.TerminaList);
+        }
+    }
+
+    //加载模板列表
+    function LoadTempList() {
+        xhr("/dg/views/GetAllGroupView", 'GET', null, function (res) {
+            if (res.Tag && res.Tag.length) {
+                var list = TempList = res.Tag;
+                var sel = $("select[name=gcode]").html("");
+                var views = list[0].views;
+                for (var i = 0; i < list.length; i++) {
+                    sel.append('<option value=' + list[i].gcode + '>' + list[i].gname + '</option>');
+                };
+                $("select[name=querycode]").html("");
+                for (var i = 0; i < views.length; i++) {
+                    $("select[name=querycode]").append('<option value="' + views[i].querycode + ',' + views[i].viewid + ',' + views[i].viewname + '">' + views[i].viewname + '</option>')
+                };
+            }
+        });
+    }
+
+    //查看历史模板列表
+    function LookHistory(row, index) {
+        $("#HistoryModal").modal();
+        $("#HistoryModal").find('h4 span').html(row.DeviceName);
+        GetHistoryTemp(row.TerminalId);
+    }
+    //获取终端历史模板
+    function GetHistoryTemp(id) {
+        xhr('/dg/publish/getpublishlog', 'POST', { deviceid: id }, function (res) {
+            if (res.Tag) {
+                LoadHistoryTemp(res.Tag);
+            }
+        });
+    }
+    function LoadHistoryTemp(list) {
+        var box = $('.his-temp-list');
+        box.empty();
+        if (!list.length) {
+            box.append('<p style="position:absolute;left: 50%;top:50%;margin-left: -100px;margin-top: -14px;font-size: 16px;"><span class="glyphicon glyphicon-info-sign" style="top: 2px; right: 2px; color: rgb(68, 157, 68);"></span>&nbsp;&nbsp;没有查询到历史模板！</p>')
+            return;
+        }
+        for (var i = 0; i < list.length; i++) {
+            var html = $('<div><p class="fl">' + (list[i].mode == 2 ? '分诊' : list[i].viewname) + '</p><button class="fr republish" style="margin-left: 20px;color:#00a5a5;" title="重新发布"><i class="fa fa-upload" aria-hidden="true"></i></button><button class="fr preview" style="margin-left: 20px;color:#00a5a5;" title="预览"><i class="fa fa-eye" aria-hidden="true"></i></button><p class="fr">' + list[i].publishdate + '</p></div>');
+            (function (data) {
+                html.find('.republish').click(function () {
+                    var that = this;
+                    $(that).attr('disabled', true);
+                    reqset.TerminalControllerRequest.ViewPulish({
+                        ViewId: data.viewid,
+                        DeviceName: [data.devicename],
+                        Mode: data.mode,
+                        Url: data.diagnosisurl,
+                        QueryCode: data.querycode
+                    }, function (errno, response) {
+                        console.log(errno, response);
+                        var self = this.GetWebSocket();
+                        $(that).removeAttr('disabled');
+                        if (self.ERROR_NO == errno) {
+                            PromptBox(response.Message);
+                        } else {
+                            console.error('timeout');
+                            PromptBox('网络超时！');
+                        }
+                    }, 5);
+                });
+                html.find('.preview').click(function () {
+                    window.open("/dg/run?code=" + data.querycode);
+                });
+            })(list[i]);
+            box.append(html);
+        }
+    }
+
+
+    //设置定时开关机
+    function SetTime(list) {
+        reqset.TerminalControllerRequest.TrunOnOff({
+            TerminalList: $('#Mt_TimeItems').val(),
+            Type: way,
+            IList: list,
+        }, function (errno, response) {
+            console.log(errno, response);
+            var self = this.GetWebSocket();
+            $('#SetTime').removeAttr('disabled');
+            if (self.ERROR_NO == errno) {
+                PromptBox(response.Message);
+            } else {
+                console.error('timeout');
+                PromptBox('网络超时！');
+            }
+        }, 5);
+    }
+    function LoadTerminalSelect(data) {
+        if (data.length <= 0) {
+            return;
+        }
+        for (var k in data) {
+            $(".selectpicker ").append('<option value="' + k + '" >' + data[k].DeviceName + '</option>');
+            $("#Mt_RelItems").append('<option value="' + data[k].DeviceName + '" >' + data[k].DeviceName + '</option>');
+            //$('#Mt_SetItems').append('<option value="' + k + '" >' + data[k].DeviceName + '</option>')
+        }
+    }
+
+
+    //一键开关机
+    function TurnOnOff(type, list) {
+        if (!list) {
+            list = [];
+        }
+        reqset.TerminalControllerRequest.TrunOnOffScreen({
+            TerminalList: list,
+            type: type
+        }, function (errno, response) {
+            console.log(errno, response);
+            var self = this.GetWebSocket();
+            $(".TurnOn").removeAttr('disabled');
+            $(".TurnOff").removeAttr('disabled');
+            if (self.ERROR_NO == errno) {
+                PromptBox(response.Message);
+            } else {
+                console.error('timeout');
+                PromptBox('网络超时！');
+            }
+        }, 5);
+    }
+
+
+    function SetType(row, type) {
+        if (type == 0) {
+            $("#SetTerminal").find('h4').html('终端重启');
+        }
+        if (type == 1) {
+            $("#SetTerminal").find('h4').html('音量设置');
+        }
+        if (type == 2) {
+            $("#SetTerminal").find('h4').html('亮度设置');
+        }
+        $(".setbar").html("");
+        $(".set-btn").removeAttr("disabled");
+        $("#SetTerminal").modal().data('type', type);
+        $("#SetTerminal").find('h4 span').html(row.DeviceName);
+        $("#Mt_SetItems").selectpicker('val', row.TerminalId);
+        $('#Mt_SetItems').selectpicker('refresh');
+    }
+</script>

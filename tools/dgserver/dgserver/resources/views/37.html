@@ -1,0 +1,3781 @@
+﻿<html><head><!--nsjsdotnet-http/s 1.1x version server[xd: w3p@csharp]--><title>37</title><script src="../components/System/Assembly.js"></script><script src="../components/System/Net/WebSocketClient.js"></script><script src="../components/jquery-1.9.1.min.js"></script><script src="../components/HtmlControl.js"></script><script src="../components/ListBox.js"></script><script src="../components/QueueInfo.js"></script><script src="../components/vconsole.min.js"></script><style type="text/css">.loading-box{position:fixed;height:100%;width:100%;z-index:100001;background:#fff;color:#00a5a5;opacity:.8;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:30px;letter-spacing:5px}.spinner{position:absolute;width:100px;height:100px;top:0;left:0;bottom:20%;right:0;margin:auto}.container1>div,.container2>div,.container3>div{width:15px;height:15px;background:#00a5a5;border-radius:100%;position:absolute;-webkit-animation:bouncedelay 1.2s infinite ease-in-out;animation:bouncedelay 1.2s infinite ease-in-out;-webkit-animation-fill-mode:both;animation-fill-mode:both}.spinner .spinner-container{position:absolute;width:100%;height:100%}.container2{-webkit-transform:rotateZ(45deg);transform:rotateZ(45deg)}.container3{-webkit-transform:rotateZ(90deg);transform:rotateZ(90deg)}.circle1{top:0;left:0}.circle2{top:0;right:0}.circle3{right:0;bottom:0}.circle4{left:0;bottom:0}.container2 .circle1{-webkit-animation-delay:-1.1s;animation-delay:-1.1s}.container3 .circle1{-webkit-animation-delay:-1s;animation-delay:-1s}.container1 .circle2{-webkit-animation-delay:-.9s;animation-delay:-.9s}.container2 .circle2{-webkit-animation-delay:-.8s;animation-delay:-.8s}.container3 .circle2{-webkit-animation-delay:-.7s;animation-delay:-.7s}.container1 .circle3{-webkit-animation-delay:-.6s;animation-delay:-.6s}.container2 .circle3{-webkit-animation-delay:-.5s;animation-delay:-.5s}.container3 .circle3{-webkit-animation-delay:-.4s;animation-delay:-.4s}.container1 .circle4{-webkit-animation-delay:-.3s;animation-delay:-.3s}.container2 .circle4{-webkit-animation-delay:-.2s;animation-delay:-.2s}.container3 .circle4{-webkit-animation-delay:-.1s;animation-delay:-.1s}@-webkit-keyframes bouncedelay{0%,100%,80%{-webkit-transform:scale(0)}40%{-webkit-transform:scale(1)}}@keyframes bouncedelay{0%,100%,80%{transform:scale(0);-webkit-transform:scale(0)}40%{transform:scale(1);-webkit-transform:scale(1)}}</style></head><body><div class="loading-box" style="display: none"><div class="spinner"><div class="spinner-container container1"><div class="circle1"></div><div class="circle2"></div><div class="circle3"></div><div class="circle4"></div></div><div class="spinner-container container2"><div class="circle1"></div><div class="circle2"></div><div class="circle3"></div><div class="circle4"></div></div><div class="spinner-container container3"><div class="circle1"></div><div class="circle2"></div><div class="circle3"></div><div class="circle4"></div></div></div><div id="LoadingPrompt" style="width:100%;text-align:center;height:100vh;line-height:120vh;">loading...</div></div></body><script>var Loading = $(".loading-box"); Object.defineProperty(window, "View", new (function() { Loading.fadeIn(); var __instance = HtmlView.ResumeLayout(null, {
+  "View": {
+    "GetType": "function() {\r\n return \"HtmlView\";\r\n}",
+    "Name": "HtmlView",
+    "Tag": null,
+    "Controls": [
+      {
+        "GetType": "function() {\r\n return \"HtmlControl\";\r\n}",
+        "Name": "HtmlControl1",
+        "Left": 0,
+        "Top": 0,
+        "Width": 1080,
+        "Height": 503,
+        "Visible": true,
+        "Dock": 0,
+        "TabIndex": 0,
+        "ZIndex": 0,
+        "Tag": null,
+        "FontFamily": "Microsoft YaHei",
+        "FontSize": 48,
+        "FontStyle": 0,
+        "Margin": {
+          "Type": "HtmlView.Rectangle",
+          "Value": {
+            "Left": 0,
+            "Top": 0,
+            "Width": 0,
+            "Height": 0,
+            "Right": 0,
+            "Bottom": 0,
+            "toString": "{Left=0, Top=0, Width=0, Height=0}",
+            "X": 0,
+            "Y": 0,
+            "Size": {
+              "Type": "Size",
+              "Value": {
+                "Width": 0,
+                "Height": 0,
+                "toString": "{Width=0, Height={1}}"
+              }
+            },
+            "toJSON": {
+              "Type": "object",
+              "Value": {
+                "Left": 0,
+                "Top": 0,
+                "Width": 0,
+                "Height": 0
+              }
+            }
+          }
+        },
+        "Padding": {
+          "Type": "HtmlView.Rectangle",
+          "Value": {
+            "Left": 0,
+            "Top": 0,
+            "Width": 0,
+            "Height": 0,
+            "Right": 0,
+            "Bottom": 0,
+            "toString": "{Left=0, Top=0, Width=0, Height=0}",
+            "X": 0,
+            "Y": 0,
+            "Size": {
+              "Type": "Size",
+              "Value": {
+                "Width": 0,
+                "Height": 0,
+                "toString": "{Width=0, Height={1}}"
+              }
+            },
+            "toJSON": {
+              "Type": "object",
+              "Value": {
+                "Left": 0,
+                "Top": 0,
+                "Width": 0,
+                "Height": 0
+              }
+            }
+          }
+        },
+        "ScrollMode": 0,
+        "Opacity": 1,
+        "Rotate": 0,
+        "BackgroundImage": "",
+        "BackgroundImageLayout": 3,
+        "Text": "",
+        "TextAlign": "center",
+        "LetterSpacing": 0,
+        "BackColor": "ff55cbb5",
+        "GradualChangeColor": "7fffffff",
+        "ForeColor": "FF000000",
+        "Controls": [],
+        "DataBindings": [],
+        "BorderWidth": {
+          "Type": "HtmlView.Rectangle",
+          "Value": {
+            "Left": 0,
+            "Top": 0,
+            "Width": 0,
+            "Height": 0,
+            "Right": 0,
+            "Bottom": 0,
+            "toString": "{Left=0, Top=0, Width=0, Height=0}",
+            "X": 0,
+            "Y": 0,
+            "Size": {
+              "Type": "Size",
+              "Value": {
+                "Width": 0,
+                "Height": 0,
+                "toString": "{Width=0, Height={1}}"
+              }
+            },
+            "toJSON": {
+              "Type": "object",
+              "Value": {
+                "Left": 0,
+                "Top": 0,
+                "Width": 0,
+                "Height": 0
+              }
+            }
+          }
+        },
+        "BorderStyle": "solid",
+        "BorderRadius": {
+          "Type": "HtmlView.Rectangle",
+          "Value": {
+            "Left": 0,
+            "Top": 0,
+            "Width": 0,
+            "Height": 0,
+            "Right": 0,
+            "Bottom": 0,
+            "toString": "{Left=0, Top=0, Width=0, Height=0}",
+            "X": 0,
+            "Y": 0,
+            "Size": {
+              "Type": "Size",
+              "Value": {
+                "Width": 0,
+                "Height": 0,
+                "toString": "{Width=0, Height={1}}"
+              }
+            },
+            "toJSON": {
+              "Type": "object",
+              "Value": {
+                "Left": 0,
+                "Top": 0,
+                "Width": 0,
+                "Height": 0
+              }
+            }
+          }
+        },
+        "BorderColor": "FF000000",
+        "Shadow": "0,0,0",
+        "ShadowColor": "",
+        "WhiteSpace": 0,
+        "ScrollDirection": 0
+      },
+      {
+        "GetType": "function() {\r\n return \"ListBox\";\r\n}",
+        "Name": "ListBox1",
+        "Left": 0,
+        "Top": 501,
+        "Width": 1080,
+        "Height": 1417,
+        "Visible": true,
+        "Dock": 0,
+        "TabIndex": 0,
+        "ZIndex": 0,
+        "Tag": null,
+        "FontFamily": "Microsoft YaHei",
+        "FontSize": 48,
+        "FontStyle": 0,
+        "Margin": {
+          "Type": "HtmlView.Rectangle",
+          "Value": {
+            "Left": 0,
+            "Top": 0,
+            "Width": 0,
+            "Height": 0,
+            "Right": 0,
+            "Bottom": 0,
+            "toString": "{Left=0, Top=0, Width=0, Height=0}",
+            "X": 0,
+            "Y": 0,
+            "Size": {
+              "Type": "Size",
+              "Value": {
+                "Width": 0,
+                "Height": 0,
+                "toString": "{Width=0, Height={1}}"
+              }
+            },
+            "toJSON": {
+              "Type": "object",
+              "Value": {
+                "Left": 0,
+                "Top": 0,
+                "Width": 0,
+                "Height": 0
+              }
+            }
+          }
+        },
+        "Padding": {
+          "Type": "object",
+          "Value": {
+            "Left": 0,
+            "Top": 0,
+            "Width": 0,
+            "Height": 0
+          }
+        },
+        "ScrollMode": 0,
+        "Opacity": 1,
+        "Rotate": 0,
+        "BackgroundImage": "",
+        "BackgroundImageLayout": 3,
+        "Text": "",
+        "TextAlign": "center",
+        "LetterSpacing": 0,
+        "BackColor": "ff695c65",
+        "GradualChangeColor": "ff393035",
+        "ForeColor": "FF000000",
+        "Controls": [],
+        "DataBindings": [],
+        "BorderWidth": {
+          "Type": "HtmlView.Rectangle",
+          "Value": {
+            "Left": 0,
+            "Top": 0,
+            "Width": 0,
+            "Height": 0,
+            "Right": 0,
+            "Bottom": 0,
+            "toString": "{Left=0, Top=0, Width=0, Height=0}",
+            "X": 0,
+            "Y": 0,
+            "Size": {
+              "Type": "Size",
+              "Value": {
+                "Width": 0,
+                "Height": 0,
+                "toString": "{Width=0, Height={1}}"
+              }
+            },
+            "toJSON": {
+              "Type": "object",
+              "Value": {
+                "Left": 0,
+                "Top": 0,
+                "Width": 0,
+                "Height": 0
+              }
+            }
+          }
+        },
+        "BorderStyle": "solid",
+        "BorderRadius": {
+          "Type": "HtmlView.Rectangle",
+          "Value": {
+            "Left": 0,
+            "Top": 0,
+            "Width": 0,
+            "Height": 0,
+            "Right": 0,
+            "Bottom": 0,
+            "toString": "{Left=0, Top=0, Width=0, Height=0}",
+            "X": 0,
+            "Y": 0,
+            "Size": {
+              "Type": "Size",
+              "Value": {
+                "Width": 0,
+                "Height": 0,
+                "toString": "{Width=0, Height={1}}"
+              }
+            },
+            "toJSON": {
+              "Type": "object",
+              "Value": {
+                "Left": 0,
+                "Top": 0,
+                "Width": 0,
+                "Height": 0
+              }
+            }
+          }
+        },
+        "BorderColor": "FF000000",
+        "Shadow": "0,0,0",
+        "ShadowColor": "",
+        "WhiteSpace": 0,
+        "ScrollDirection": 0,
+        "RowItemCount": 1,
+        "Items": {
+          "length": 0
+        },
+        "ItemStyle": {
+          "Type": "ListBoxItemStyle",
+          "Value": {
+            "GetType": "function() {\r\n return \"ListBox\";\r\n}",
+            "Index": {
+              "Type": "ListBoxItemPropertyStyle",
+              "Value": {
+                "GetType": "function() {\r\n return \"ListBox\";\r\n}",
+                "Width": "auto",
+                "Visible": true,
+                "Padding": "0,0,0,0",
+                "Margin": "0,0,0,0",
+                "FontSize": 48,
+                "ForeColor": "FF000000",
+                "BackColor": "ffffff",
+                "BorderRadius": "0,0,0,0",
+                "TextAlign": "left"
+              }
+            },
+            "Name": {
+              "Type": "ListBoxItemPropertyStyle",
+              "Value": {
+                "GetType": "function() {\r\n return \"ListBox\";\r\n}",
+                "Width": "auto",
+                "Visible": true,
+                "Padding": "0,0,0,0",
+                "Margin": "0,0,0,0",
+                "FontSize": 48,
+                "ForeColor": "FF000000",
+                "BackColor": "ffffff",
+                "BorderRadius": "0,0,0,0",
+                "TextAlign": "left"
+              }
+            },
+            "Time": {
+              "Type": "ListBoxItemPropertyStyle",
+              "Value": {
+                "GetType": "function() {\r\n return \"ListBox\";\r\n}",
+                "Width": "auto",
+                "Visible": true,
+                "Padding": "0,0,0,0",
+                "Margin": "0,0,0,0",
+                "FontSize": 48,
+                "ForeColor": "FF000000",
+                "BackColor": "ffffff",
+                "BorderRadius": "0,0,0,0",
+                "TextAlign": "left"
+              }
+            }
+          }
+        },
+        "TimeMargin": {
+          "Type": "object",
+          "Value": {
+            "Left": 0,
+            "Top": 0,
+            "Width": 0,
+            "Height": 0
+          }
+        }
+      },
+      {
+        "GetType": "function() {\r\n return \"HtmlControl\";\r\n}",
+        "Name": "HtmlControl2",
+        "Left": 14,
+        "Top": 0,
+        "Width": 1054,
+        "Height": 177,
+        "Visible": true,
+        "Dock": 0,
+        "TabIndex": 0,
+        "ZIndex": 0,
+        "Tag": null,
+        "FontFamily": "Microsoft YaHei",
+        "FontSize": 24,
+        "FontStyle": 0,
+        "Margin": {
+          "Type": "HtmlView.Rectangle",
+          "Value": {
+            "Left": 0,
+            "Top": 0,
+            "Width": 0,
+            "Height": 0,
+            "Right": 0,
+            "Bottom": 0,
+            "toString": "{Left=0, Top=0, Width=0, Height=0}",
+            "X": 0,
+            "Y": 0,
+            "Size": {
+              "Type": "Size",
+              "Value": {
+                "Width": 0,
+                "Height": 0,
+                "toString": "{Width=0, Height={1}}"
+              }
+            },
+            "toJSON": {
+              "Type": "object",
+              "Value": {
+                "Left": 0,
+                "Top": 0,
+                "Width": 0,
+                "Height": 0
+              }
+            }
+          }
+        },
+        "Padding": {
+          "Type": "HtmlView.Rectangle",
+          "Value": {
+            "Left": 0,
+            "Top": 0,
+            "Width": 0,
+            "Height": 0,
+            "Right": 0,
+            "Bottom": 0,
+            "toString": "{Left=0, Top=0, Width=0, Height=0}",
+            "X": 0,
+            "Y": 0,
+            "Size": {
+              "Type": "Size",
+              "Value": {
+                "Width": 0,
+                "Height": 0,
+                "toString": "{Width=0, Height={1}}"
+              }
+            },
+            "toJSON": {
+              "Type": "object",
+              "Value": {
+                "Left": 0,
+                "Top": 0,
+                "Width": 0,
+                "Height": 0
+              }
+            }
+          }
+        },
+        "ScrollMode": 0,
+        "Opacity": 1,
+        "Rotate": 0,
+        "BackgroundImage": "",
+        "BackgroundImageLayout": 3,
+        "Text": "",
+        "TextAlign": "center",
+        "LetterSpacing": 0,
+        "BackColor": "ffffffff",
+        "GradualChangeColor": "7fffffff",
+        "ForeColor": "FF000000",
+        "Controls": [
+          {
+            "GetType": "function() {\r\n return \"HtmlControl\";\r\n}",
+            "Name": "HtmlControl5",
+            "Left": 44,
+            "Top": 27,
+            "Width": 100,
+            "Height": 100,
+            "Visible": true,
+            "Dock": 0,
+            "TabIndex": 0,
+            "ZIndex": 0,
+            "Tag": null,
+            "FontFamily": "Microsoft YaHei",
+            "FontSize": 48,
+            "FontStyle": 0,
+            "Margin": {
+              "Type": "HtmlView.Rectangle",
+              "Value": {
+                "Left": 0,
+                "Top": 0,
+                "Width": 0,
+                "Height": 0,
+                "Right": 0,
+                "Bottom": 0,
+                "toString": "{Left=0, Top=0, Width=0, Height=0}",
+                "X": 0,
+                "Y": 0,
+                "Size": {
+                  "Type": "Size",
+                  "Value": {
+                    "Width": 0,
+                    "Height": 0,
+                    "toString": "{Width=0, Height={1}}"
+                  }
+                },
+                "toJSON": {
+                  "Type": "object",
+                  "Value": {
+                    "Left": 0,
+                    "Top": 0,
+                    "Width": 0,
+                    "Height": 0
+                  }
+                }
+              }
+            },
+            "Padding": {
+              "Type": "HtmlView.Rectangle",
+              "Value": {
+                "Left": 0,
+                "Top": 0,
+                "Width": 0,
+                "Height": 0,
+                "Right": 0,
+                "Bottom": 0,
+                "toString": "{Left=0, Top=0, Width=0, Height=0}",
+                "X": 0,
+                "Y": 0,
+                "Size": {
+                  "Type": "Size",
+                  "Value": {
+                    "Width": 0,
+                    "Height": 0,
+                    "toString": "{Width=0, Height={1}}"
+                  }
+                },
+                "toJSON": {
+                  "Type": "object",
+                  "Value": {
+                    "Left": 0,
+                    "Top": 0,
+                    "Width": 0,
+                    "Height": 0
+                  }
+                }
+              }
+            },
+            "ScrollMode": 0,
+            "Opacity": 1,
+            "Rotate": 0,
+            "BackgroundImage": "../u/logo_橙色 .png",
+            "BackgroundImageLayout": 3,
+            "Text": "",
+            "TextAlign": "center",
+            "LetterSpacing": 0,
+            "BackColor": "ffffffff",
+            "GradualChangeColor": "7fffffff",
+            "ForeColor": "FF000000",
+            "Controls": [],
+            "DataBindings": [],
+            "BorderWidth": {
+              "Type": "HtmlView.Rectangle",
+              "Value": {
+                "Left": 0,
+                "Top": 0,
+                "Width": 0,
+                "Height": 0,
+                "Right": 0,
+                "Bottom": 0,
+                "toString": "{Left=0, Top=0, Width=0, Height=0}",
+                "X": 0,
+                "Y": 0,
+                "Size": {
+                  "Type": "Size",
+                  "Value": {
+                    "Width": 0,
+                    "Height": 0,
+                    "toString": "{Width=0, Height={1}}"
+                  }
+                },
+                "toJSON": {
+                  "Type": "object",
+                  "Value": {
+                    "Left": 0,
+                    "Top": 0,
+                    "Width": 0,
+                    "Height": 0
+                  }
+                }
+              }
+            },
+            "BorderStyle": "solid",
+            "BorderRadius": {
+              "Type": "HtmlView.Rectangle",
+              "Value": {
+                "Left": 0,
+                "Top": 0,
+                "Width": 0,
+                "Height": 0,
+                "Right": 0,
+                "Bottom": 0,
+                "toString": "{Left=0, Top=0, Width=0, Height=0}",
+                "X": 0,
+                "Y": 0,
+                "Size": {
+                  "Type": "Size",
+                  "Value": {
+                    "Width": 0,
+                    "Height": 0,
+                    "toString": "{Width=0, Height={1}}"
+                  }
+                },
+                "toJSON": {
+                  "Type": "object",
+                  "Value": {
+                    "Left": 0,
+                    "Top": 0,
+                    "Width": 0,
+                    "Height": 0
+                  }
+                }
+              }
+            },
+            "BorderColor": "FF000000",
+            "Shadow": "0,0,0",
+            "ShadowColor": "",
+            "WhiteSpace": 0,
+            "ScrollDirection": 0
+          },
+          {
+            "GetType": "function() {\r\n return \"HtmlControl\";\r\n}",
+            "Name": "HtmlControl6",
+            "Left": 765,
+            "Top": 49,
+            "Width": 255,
+            "Height": 70,
+            "Visible": true,
+            "Dock": 0,
+            "TabIndex": 0,
+            "ZIndex": 0,
+            "Tag": null,
+            "FontFamily": "Microsoft YaHei",
+            "FontSize": 78,
+            "FontStyle": 0,
+            "Margin": {
+              "Type": "HtmlView.Rectangle",
+              "Value": {
+                "Left": 0,
+                "Top": 0,
+                "Width": 0,
+                "Height": 0,
+                "Right": 0,
+                "Bottom": 0,
+                "toString": "{Left=0, Top=0, Width=0, Height=0}",
+                "X": 0,
+                "Y": 0,
+                "Size": {
+                  "Type": "Size",
+                  "Value": {
+                    "Width": 0,
+                    "Height": 0,
+                    "toString": "{Width=0, Height={1}}"
+                  }
+                },
+                "toJSON": {
+                  "Type": "object",
+                  "Value": {
+                    "Left": 0,
+                    "Top": 0,
+                    "Width": 0,
+                    "Height": 0
+                  }
+                }
+              }
+            },
+            "Padding": {
+              "Type": "HtmlView.Rectangle",
+              "Value": {
+                "Left": 0,
+                "Top": 0,
+                "Width": 0,
+                "Height": 0,
+                "Right": 0,
+                "Bottom": 0,
+                "toString": "{Left=0, Top=0, Width=0, Height=0}",
+                "X": 0,
+                "Y": 0,
+                "Size": {
+                  "Type": "Size",
+                  "Value": {
+                    "Width": 0,
+                    "Height": 0,
+                    "toString": "{Width=0, Height={1}}"
+                  }
+                },
+                "toJSON": {
+                  "Type": "object",
+                  "Value": {
+                    "Left": 0,
+                    "Top": 0,
+                    "Width": 0,
+                    "Height": 0
+                  }
+                }
+              }
+            },
+            "ScrollMode": 0,
+            "Opacity": 1,
+            "Rotate": 0,
+            "BackgroundImage": "",
+            "BackgroundImageLayout": 3,
+            "Text": "13 : 14",
+            "TextAlign": "center",
+            "LetterSpacing": 0,
+            "BackColor": "ffffffff",
+            "GradualChangeColor": "7fffffff",
+            "ForeColor": "FF4F3F49",
+            "Controls": [],
+            "DataBindings": [],
+            "BorderWidth": {
+              "Type": "HtmlView.Rectangle",
+              "Value": {
+                "Left": 0,
+                "Top": 0,
+                "Width": 0,
+                "Height": 0,
+                "Right": 0,
+                "Bottom": 0,
+                "toString": "{Left=0, Top=0, Width=0, Height=0}",
+                "X": 0,
+                "Y": 0,
+                "Size": {
+                  "Type": "Size",
+                  "Value": {
+                    "Width": 0,
+                    "Height": 0,
+                    "toString": "{Width=0, Height={1}}"
+                  }
+                },
+                "toJSON": {
+                  "Type": "object",
+                  "Value": {
+                    "Left": 0,
+                    "Top": 0,
+                    "Width": 0,
+                    "Height": 0
+                  }
+                }
+              }
+            },
+            "BorderStyle": "solid",
+            "BorderRadius": {
+              "Type": "HtmlView.Rectangle",
+              "Value": {
+                "Left": 0,
+                "Top": 0,
+                "Width": 0,
+                "Height": 0,
+                "Right": 0,
+                "Bottom": 0,
+                "toString": "{Left=0, Top=0, Width=0, Height=0}",
+                "X": 0,
+                "Y": 0,
+                "Size": {
+                  "Type": "Size",
+                  "Value": {
+                    "Width": 0,
+                    "Height": 0,
+                    "toString": "{Width=0, Height={1}}"
+                  }
+                },
+                "toJSON": {
+                  "Type": "object",
+                  "Value": {
+                    "Left": 0,
+                    "Top": 0,
+                    "Width": 0,
+                    "Height": 0
+                  }
+                }
+              }
+            },
+            "BorderColor": "FF000000",
+            "Shadow": "0,0,0",
+            "ShadowColor": "",
+            "WhiteSpace": 0,
+            "ScrollDirection": 0
+          },
+          {
+            "GetType": "function() {\r\n return \"HtmlControl\";\r\n}",
+            "Name": "HtmlControl7",
+            "Left": 652,
+            "Top": 56,
+            "Width": 88,
+            "Height": 26,
+            "Visible": true,
+            "Dock": 0,
+            "TabIndex": 0,
+            "ZIndex": 0,
+            "Tag": null,
+            "FontFamily": "Microsoft YaHei",
+            "FontSize": 25,
+            "FontStyle": 0,
+            "Margin": {
+              "Type": "HtmlView.Rectangle",
+              "Value": {
+                "Left": 0,
+                "Top": 0,
+                "Width": 0,
+                "Height": 0,
+                "Right": 0,
+                "Bottom": 0,
+                "toString": "{Left=0, Top=0, Width=0, Height=0}",
+                "X": 0,
+                "Y": 0,
+                "Size": {
+                  "Type": "Size",
+                  "Value": {
+                    "Width": 0,
+                    "Height": 0,
+                    "toString": "{Width=0, Height={1}}"
+                  }
+                },
+                "toJSON": {
+                  "Type": "object",
+                  "Value": {
+                    "Left": 0,
+                    "Top": 0,
+                    "Width": 0,
+                    "Height": 0
+                  }
+                }
+              }
+            },
+            "Padding": {
+              "Type": "HtmlView.Rectangle",
+              "Value": {
+                "Left": 0,
+                "Top": 0,
+                "Width": 0,
+                "Height": 0,
+                "Right": 0,
+                "Bottom": 0,
+                "toString": "{Left=0, Top=0, Width=0, Height=0}",
+                "X": 0,
+                "Y": 0,
+                "Size": {
+                  "Type": "Size",
+                  "Value": {
+                    "Width": 0,
+                    "Height": 0,
+                    "toString": "{Width=0, Height={1}}"
+                  }
+                },
+                "toJSON": {
+                  "Type": "object",
+                  "Value": {
+                    "Left": 0,
+                    "Top": 0,
+                    "Width": 0,
+                    "Height": 0
+                  }
+                }
+              }
+            },
+            "ScrollMode": 0,
+            "Opacity": 1,
+            "Rotate": 0,
+            "BackgroundImage": "",
+            "BackgroundImageLayout": 3,
+            "Text": "星期一",
+            "TextAlign": "center",
+            "LetterSpacing": 0,
+            "BackColor": "ffffffff",
+            "GradualChangeColor": "7fffffff",
+            "ForeColor": "FF9F8B97",
+            "Controls": [],
+            "DataBindings": [],
+            "BorderWidth": {
+              "Type": "HtmlView.Rectangle",
+              "Value": {
+                "Left": 0,
+                "Top": 0,
+                "Width": 0,
+                "Height": 0,
+                "Right": 0,
+                "Bottom": 0,
+                "toString": "{Left=0, Top=0, Width=0, Height=0}",
+                "X": 0,
+                "Y": 0,
+                "Size": {
+                  "Type": "Size",
+                  "Value": {
+                    "Width": 0,
+                    "Height": 0,
+                    "toString": "{Width=0, Height={1}}"
+                  }
+                },
+                "toJSON": {
+                  "Type": "object",
+                  "Value": {
+                    "Left": 0,
+                    "Top": 0,
+                    "Width": 0,
+                    "Height": 0
+                  }
+                }
+              }
+            },
+            "BorderStyle": "solid",
+            "BorderRadius": {
+              "Type": "HtmlView.Rectangle",
+              "Value": {
+                "Left": 0,
+                "Top": 0,
+                "Width": 0,
+                "Height": 0,
+                "Right": 0,
+                "Bottom": 0,
+                "toString": "{Left=0, Top=0, Width=0, Height=0}",
+                "X": 0,
+                "Y": 0,
+                "Size": {
+                  "Type": "Size",
+                  "Value": {
+                    "Width": 0,
+                    "Height": 0,
+                    "toString": "{Width=0, Height={1}}"
+                  }
+                },
+                "toJSON": {
+                  "Type": "object",
+                  "Value": {
+                    "Left": 0,
+                    "Top": 0,
+                    "Width": 0,
+                    "Height": 0
+                  }
+                }
+              }
+            },
+            "BorderColor": "FF000000",
+            "Shadow": "0,0,0",
+            "ShadowColor": "",
+            "WhiteSpace": 0,
+            "ScrollDirection": 0
+          },
+          {
+            "GetType": "function() {\r\n return \"HtmlControl\";\r\n}",
+            "Name": "HtmlControl8",
+            "Left": 537,
+            "Top": 92,
+            "Width": 240,
+            "Height": 23,
+            "Visible": true,
+            "Dock": 0,
+            "TabIndex": 0,
+            "ZIndex": 0,
+            "Tag": null,
+            "FontFamily": "Microsoft YaHei",
+            "FontSize": 24,
+            "FontStyle": 0,
+            "Margin": {
+              "Type": "HtmlView.Rectangle",
+              "Value": {
+                "Left": 0,
+                "Top": 0,
+                "Width": 0,
+                "Height": 0,
+                "Right": 0,
+                "Bottom": 0,
+                "toString": "{Left=0, Top=0, Width=0, Height=0}",
+                "X": 0,
+                "Y": 0,
+                "Size": {
+                  "Type": "Size",
+                  "Value": {
+                    "Width": 0,
+                    "Height": 0,
+                    "toString": "{Width=0, Height={1}}"
+                  }
+                },
+                "toJSON": {
+                  "Type": "object",
+                  "Value": {
+                    "Left": 0,
+                    "Top": 0,
+                    "Width": 0,
+                    "Height": 0
+                  }
+                }
+              }
+            },
+            "Padding": {
+              "Type": "HtmlView.Rectangle",
+              "Value": {
+                "Left": 0,
+                "Top": 0,
+                "Width": 0,
+                "Height": 0,
+                "Right": 0,
+                "Bottom": 0,
+                "toString": "{Left=0, Top=0, Width=0, Height=0}",
+                "X": 0,
+                "Y": 0,
+                "Size": {
+                  "Type": "Size",
+                  "Value": {
+                    "Width": 0,
+                    "Height": 0,
+                    "toString": "{Width=0, Height={1}}"
+                  }
+                },
+                "toJSON": {
+                  "Type": "object",
+                  "Value": {
+                    "Left": 0,
+                    "Top": 0,
+                    "Width": 0,
+                    "Height": 0
+                  }
+                }
+              }
+            },
+            "ScrollMode": 0,
+            "Opacity": 1,
+            "Rotate": 0,
+            "BackgroundImage": "",
+            "BackgroundImageLayout": 3,
+            "Text": "2018年12月13号",
+            "TextAlign": "center",
+            "LetterSpacing": 0,
+            "BackColor": "ffffffff",
+            "GradualChangeColor": "7fffffff",
+            "ForeColor": "FF9F8B97",
+            "Controls": [],
+            "DataBindings": [],
+            "BorderWidth": {
+              "Type": "HtmlView.Rectangle",
+              "Value": {
+                "Left": 0,
+                "Top": 0,
+                "Width": 0,
+                "Height": 0,
+                "Right": 0,
+                "Bottom": 0,
+                "toString": "{Left=0, Top=0, Width=0, Height=0}",
+                "X": 0,
+                "Y": 0,
+                "Size": {
+                  "Type": "Size",
+                  "Value": {
+                    "Width": 0,
+                    "Height": 0,
+                    "toString": "{Width=0, Height={1}}"
+                  }
+                },
+                "toJSON": {
+                  "Type": "object",
+                  "Value": {
+                    "Left": 0,
+                    "Top": 0,
+                    "Width": 0,
+                    "Height": 0
+                  }
+                }
+              }
+            },
+            "BorderStyle": "solid",
+            "BorderRadius": {
+              "Type": "HtmlView.Rectangle",
+              "Value": {
+                "Left": 0,
+                "Top": 0,
+                "Width": 0,
+                "Height": 0,
+                "Right": 0,
+                "Bottom": 0,
+                "toString": "{Left=0, Top=0, Width=0, Height=0}",
+                "X": 0,
+                "Y": 0,
+                "Size": {
+                  "Type": "Size",
+                  "Value": {
+                    "Width": 0,
+                    "Height": 0,
+                    "toString": "{Width=0, Height={1}}"
+                  }
+                },
+                "toJSON": {
+                  "Type": "object",
+                  "Value": {
+                    "Left": 0,
+                    "Top": 0,
+                    "Width": 0,
+                    "Height": 0
+                  }
+                }
+              }
+            },
+            "BorderColor": "FF9F8B97",
+            "Shadow": "0,0,0",
+            "ShadowColor": "",
+            "WhiteSpace": 0,
+            "ScrollDirection": 0
+          }
+        ],
+        "DataBindings": [],
+        "BorderWidth": {
+          "Type": "HtmlView.Rectangle",
+          "Value": {
+            "Left": 0,
+            "Top": 0,
+            "Width": 0,
+            "Height": 0,
+            "Right": 0,
+            "Bottom": 0,
+            "toString": "{Left=0, Top=0, Width=0, Height=0}",
+            "X": 0,
+            "Y": 0,
+            "Size": {
+              "Type": "Size",
+              "Value": {
+                "Width": 0,
+                "Height": 0,
+                "toString": "{Width=0, Height={1}}"
+              }
+            },
+            "toJSON": {
+              "Type": "object",
+              "Value": {
+                "Left": 0,
+                "Top": 0,
+                "Width": 0,
+                "Height": 0
+              }
+            }
+          }
+        },
+        "BorderStyle": "solid",
+        "BorderRadius": {
+          "Type": "HtmlView.Rectangle",
+          "Value": {
+            "Left": 0,
+            "Top": 0,
+            "Width": 8,
+            "Height": 8,
+            "Right": 8,
+            "Bottom": 8,
+            "toString": "{Left=0, Top=0, Width=8, Height=8}",
+            "X": 0,
+            "Y": 0,
+            "Size": {
+              "Type": "Size",
+              "Value": {
+                "Width": 8,
+                "Height": 8,
+                "toString": "{Width=8, Height={1}}"
+              }
+            },
+            "toJSON": {
+              "Type": "object",
+              "Value": {
+                "Left": 0,
+                "Top": 0,
+                "Width": 8,
+                "Height": 8
+              }
+            }
+          }
+        },
+        "BorderColor": "FF000000",
+        "Shadow": "0,0,0",
+        "ShadowColor": "",
+        "WhiteSpace": 0,
+        "ScrollDirection": 0
+      },
+      {
+        "GetType": "function() {\r\n return \"HtmlControl\";\r\n}",
+        "Name": "HtmlControl3",
+        "Left": 13,
+        "Top": 190,
+        "Width": 1054,
+        "Height": 802,
+        "Visible": true,
+        "Dock": 0,
+        "TabIndex": 0,
+        "ZIndex": 0,
+        "Tag": null,
+        "FontFamily": "Microsoft YaHei",
+        "FontSize": 48,
+        "FontStyle": 0,
+        "Margin": {
+          "Type": "HtmlView.Rectangle",
+          "Value": {
+            "Left": 0,
+            "Top": 0,
+            "Width": 0,
+            "Height": 0,
+            "Right": 0,
+            "Bottom": 0,
+            "toString": "{Left=0, Top=0, Width=0, Height=0}",
+            "X": 0,
+            "Y": 0,
+            "Size": {
+              "Type": "Size",
+              "Value": {
+                "Width": 0,
+                "Height": 0,
+                "toString": "{Width=0, Height={1}}"
+              }
+            },
+            "toJSON": {
+              "Type": "object",
+              "Value": {
+                "Left": 0,
+                "Top": 0,
+                "Width": 0,
+                "Height": 0
+              }
+            }
+          }
+        },
+        "Padding": {
+          "Type": "HtmlView.Rectangle",
+          "Value": {
+            "Left": 0,
+            "Top": 0,
+            "Width": 0,
+            "Height": 0,
+            "Right": 0,
+            "Bottom": 0,
+            "toString": "{Left=0, Top=0, Width=0, Height=0}",
+            "X": 0,
+            "Y": 0,
+            "Size": {
+              "Type": "Size",
+              "Value": {
+                "Width": 0,
+                "Height": 0,
+                "toString": "{Width=0, Height={1}}"
+              }
+            },
+            "toJSON": {
+              "Type": "object",
+              "Value": {
+                "Left": 0,
+                "Top": 0,
+                "Width": 0,
+                "Height": 0
+              }
+            }
+          }
+        },
+        "ScrollMode": 0,
+        "Opacity": 1,
+        "Rotate": 0,
+        "BackgroundImage": "",
+        "BackgroundImageLayout": 3,
+        "Text": "",
+        "TextAlign": "center",
+        "LetterSpacing": 0,
+        "BackColor": "ffffffff",
+        "GradualChangeColor": "7fffffff",
+        "ForeColor": "FF000000",
+        "Controls": [
+          {
+            "GetType": "function() {\r\n return \"HtmlControl\";\r\n}",
+            "Name": "HtmlControl9",
+            "Left": 73,
+            "Top": 31,
+            "Width": 905,
+            "Height": 100,
+            "Visible": true,
+            "Dock": 0,
+            "TabIndex": 0,
+            "ZIndex": 0,
+            "Tag": null,
+            "FontFamily": "Microsoft YaHei",
+            "FontSize": 51,
+            "FontStyle": 0,
+            "Margin": {
+              "Type": "HtmlView.Rectangle",
+              "Value": {
+                "Left": 0,
+                "Top": 0,
+                "Width": 0,
+                "Height": 0,
+                "Right": 0,
+                "Bottom": 0,
+                "toString": "{Left=0, Top=0, Width=0, Height=0}",
+                "X": 0,
+                "Y": 0,
+                "Size": {
+                  "Type": "Size",
+                  "Value": {
+                    "Width": 0,
+                    "Height": 0,
+                    "toString": "{Width=0, Height={1}}"
+                  }
+                },
+                "toJSON": {
+                  "Type": "object",
+                  "Value": {
+                    "Left": 0,
+                    "Top": 0,
+                    "Width": 0,
+                    "Height": 0
+                  }
+                }
+              }
+            },
+            "Padding": {
+              "Type": "HtmlView.Rectangle",
+              "Value": {
+                "Left": 0,
+                "Top": 0,
+                "Width": 0,
+                "Height": 0,
+                "Right": 0,
+                "Bottom": 0,
+                "toString": "{Left=0, Top=0, Width=0, Height=0}",
+                "X": 0,
+                "Y": 0,
+                "Size": {
+                  "Type": "Size",
+                  "Value": {
+                    "Width": 0,
+                    "Height": 0,
+                    "toString": "{Width=0, Height={1}}"
+                  }
+                },
+                "toJSON": {
+                  "Type": "object",
+                  "Value": {
+                    "Left": 0,
+                    "Top": 0,
+                    "Width": 0,
+                    "Height": 0
+                  }
+                }
+              }
+            },
+            "ScrollMode": 0,
+            "Opacity": 1,
+            "Rotate": 0,
+            "BackgroundImage": "",
+            "BackgroundImageLayout": 3,
+            "Text": "一诊室",
+            "TextAlign": "center",
+            "LetterSpacing": 0,
+            "BackColor": "ff55cac2",
+            "GradualChangeColor": "ff54caa7",
+            "ForeColor": "FFFFFFFF",
+            "Controls": [],
+            "DataBindings": [],
+            "BorderWidth": {
+              "Type": "HtmlView.Rectangle",
+              "Value": {
+                "Left": 0,
+                "Top": 0,
+                "Width": 0,
+                "Height": 0,
+                "Right": 0,
+                "Bottom": 0,
+                "toString": "{Left=0, Top=0, Width=0, Height=0}",
+                "X": 0,
+                "Y": 0,
+                "Size": {
+                  "Type": "Size",
+                  "Value": {
+                    "Width": 0,
+                    "Height": 0,
+                    "toString": "{Width=0, Height={1}}"
+                  }
+                },
+                "toJSON": {
+                  "Type": "object",
+                  "Value": {
+                    "Left": 0,
+                    "Top": 0,
+                    "Width": 0,
+                    "Height": 0
+                  }
+                }
+              }
+            },
+            "BorderStyle": "solid",
+            "BorderRadius": {
+              "Type": "HtmlView.Rectangle",
+              "Value": {
+                "Left": 8,
+                "Top": 8,
+                "Width": 8,
+                "Height": 8,
+                "Right": 16,
+                "Bottom": 16,
+                "toString": "{Left=8, Top=8, Width=8, Height=8}",
+                "X": 8,
+                "Y": 8,
+                "Size": {
+                  "Type": "Size",
+                  "Value": {
+                    "Width": 8,
+                    "Height": 8,
+                    "toString": "{Width=8, Height={1}}"
+                  }
+                },
+                "toJSON": {
+                  "Type": "object",
+                  "Value": {
+                    "Left": 8,
+                    "Top": 8,
+                    "Width": 8,
+                    "Height": 8
+                  }
+                }
+              }
+            },
+            "BorderColor": "FF000000",
+            "Shadow": "0,0,0",
+            "ShadowColor": "",
+            "WhiteSpace": 0,
+            "ScrollDirection": 0
+          },
+          {
+            "GetType": "function() {\r\n return \"HtmlControl\";\r\n}",
+            "Name": "HtmlControl10",
+            "Left": 0,
+            "Top": 171,
+            "Width": 15,
+            "Height": 25,
+            "Visible": true,
+            "Dock": 0,
+            "TabIndex": 0,
+            "ZIndex": 0,
+            "Tag": null,
+            "FontFamily": "Microsoft YaHei",
+            "FontSize": 48,
+            "FontStyle": 0,
+            "Margin": {
+              "Type": "HtmlView.Rectangle",
+              "Value": {
+                "Left": 0,
+                "Top": 0,
+                "Width": 0,
+                "Height": 0,
+                "Right": 0,
+                "Bottom": 0,
+                "toString": "{Left=0, Top=0, Width=0, Height=0}",
+                "X": 0,
+                "Y": 0,
+                "Size": {
+                  "Type": "Size",
+                  "Value": {
+                    "Width": 0,
+                    "Height": 0,
+                    "toString": "{Width=0, Height={1}}"
+                  }
+                },
+                "toJSON": {
+                  "Type": "object",
+                  "Value": {
+                    "Left": 0,
+                    "Top": 0,
+                    "Width": 0,
+                    "Height": 0
+                  }
+                }
+              }
+            },
+            "Padding": {
+              "Type": "HtmlView.Rectangle",
+              "Value": {
+                "Left": 0,
+                "Top": 0,
+                "Width": 0,
+                "Height": 0,
+                "Right": 0,
+                "Bottom": 0,
+                "toString": "{Left=0, Top=0, Width=0, Height=0}",
+                "X": 0,
+                "Y": 0,
+                "Size": {
+                  "Type": "Size",
+                  "Value": {
+                    "Width": 0,
+                    "Height": 0,
+                    "toString": "{Width=0, Height={1}}"
+                  }
+                },
+                "toJSON": {
+                  "Type": "object",
+                  "Value": {
+                    "Left": 0,
+                    "Top": 0,
+                    "Width": 0,
+                    "Height": 0
+                  }
+                }
+              }
+            },
+            "ScrollMode": 0,
+            "Opacity": 1,
+            "Rotate": 0,
+            "BackgroundImage": "",
+            "BackgroundImageLayout": 3,
+            "Text": "",
+            "TextAlign": "center",
+            "LetterSpacing": 0,
+            "BackColor": "ff55caaf",
+            "GradualChangeColor": "7fffffff",
+            "ForeColor": "FF000000",
+            "Controls": [],
+            "DataBindings": [],
+            "BorderWidth": {
+              "Type": "HtmlView.Rectangle",
+              "Value": {
+                "Left": 0,
+                "Top": 0,
+                "Width": 0,
+                "Height": 0,
+                "Right": 0,
+                "Bottom": 0,
+                "toString": "{Left=0, Top=0, Width=0, Height=0}",
+                "X": 0,
+                "Y": 0,
+                "Size": {
+                  "Type": "Size",
+                  "Value": {
+                    "Width": 0,
+                    "Height": 0,
+                    "toString": "{Width=0, Height={1}}"
+                  }
+                },
+                "toJSON": {
+                  "Type": "object",
+                  "Value": {
+                    "Left": 0,
+                    "Top": 0,
+                    "Width": 0,
+                    "Height": 0
+                  }
+                }
+              }
+            },
+            "BorderStyle": "solid",
+            "BorderRadius": {
+              "Type": "HtmlView.Rectangle",
+              "Value": {
+                "Left": 0,
+                "Top": 13,
+                "Width": 13,
+                "Height": 0,
+                "Right": 13,
+                "Bottom": 13,
+                "toString": "{Left=0, Top=13, Width=13, Height=0}",
+                "X": 0,
+                "Y": 13,
+                "Size": {
+                  "Type": "Size",
+                  "Value": {
+                    "Width": 13,
+                    "Height": 0,
+                    "toString": "{Width=13, Height={1}}"
+                  }
+                },
+                "toJSON": {
+                  "Type": "object",
+                  "Value": {
+                    "Left": 0,
+                    "Top": 13,
+                    "Width": 13,
+                    "Height": 0
+                  }
+                }
+              }
+            },
+            "BorderColor": "FF000000",
+            "Shadow": "0,0,0",
+            "ShadowColor": "",
+            "WhiteSpace": 0,
+            "ScrollDirection": 0
+          },
+          {
+            "GetType": "function() {\r\n return \"HtmlControl\";\r\n}",
+            "Name": "HtmlControl11",
+            "Left": 1040,
+            "Top": 171,
+            "Width": 15,
+            "Height": 25,
+            "Visible": true,
+            "Dock": 0,
+            "TabIndex": 0,
+            "ZIndex": 0,
+            "Tag": null,
+            "FontFamily": "Microsoft YaHei",
+            "FontSize": 48,
+            "FontStyle": 0,
+            "Margin": {
+              "Type": "HtmlView.Rectangle",
+              "Value": {
+                "Left": 0,
+                "Top": 0,
+                "Width": 0,
+                "Height": 0,
+                "Right": 0,
+                "Bottom": 0,
+                "toString": "{Left=0, Top=0, Width=0, Height=0}",
+                "X": 0,
+                "Y": 0,
+                "Size": {
+                  "Type": "Size",
+                  "Value": {
+                    "Width": 0,
+                    "Height": 0,
+                    "toString": "{Width=0, Height={1}}"
+                  }
+                },
+                "toJSON": {
+                  "Type": "object",
+                  "Value": {
+                    "Left": 0,
+                    "Top": 0,
+                    "Width": 0,
+                    "Height": 0
+                  }
+                }
+              }
+            },
+            "Padding": {
+              "Type": "HtmlView.Rectangle",
+              "Value": {
+                "Left": 0,
+                "Top": 0,
+                "Width": 0,
+                "Height": 0,
+                "Right": 0,
+                "Bottom": 0,
+                "toString": "{Left=0, Top=0, Width=0, Height=0}",
+                "X": 0,
+                "Y": 0,
+                "Size": {
+                  "Type": "Size",
+                  "Value": {
+                    "Width": 0,
+                    "Height": 0,
+                    "toString": "{Width=0, Height={1}}"
+                  }
+                },
+                "toJSON": {
+                  "Type": "object",
+                  "Value": {
+                    "Left": 0,
+                    "Top": 0,
+                    "Width": 0,
+                    "Height": 0
+                  }
+                }
+              }
+            },
+            "ScrollMode": 0,
+            "Opacity": 1,
+            "Rotate": 0,
+            "BackgroundImage": "",
+            "BackgroundImageLayout": 3,
+            "Text": "",
+            "TextAlign": "center",
+            "LetterSpacing": 0,
+            "BackColor": "ff55caaf",
+            "GradualChangeColor": "7fffffff",
+            "ForeColor": "FF000000",
+            "Controls": [],
+            "DataBindings": [],
+            "BorderWidth": {
+              "Type": "HtmlView.Rectangle",
+              "Value": {
+                "Left": 0,
+                "Top": 0,
+                "Width": 0,
+                "Height": 0,
+                "Right": 0,
+                "Bottom": 0,
+                "toString": "{Left=0, Top=0, Width=0, Height=0}",
+                "X": 0,
+                "Y": 0,
+                "Size": {
+                  "Type": "Size",
+                  "Value": {
+                    "Width": 0,
+                    "Height": 0,
+                    "toString": "{Width=0, Height={1}}"
+                  }
+                },
+                "toJSON": {
+                  "Type": "object",
+                  "Value": {
+                    "Left": 0,
+                    "Top": 0,
+                    "Width": 0,
+                    "Height": 0
+                  }
+                }
+              }
+            },
+            "BorderStyle": "solid",
+            "BorderRadius": {
+              "Type": "HtmlView.Rectangle",
+              "Value": {
+                "Left": 13,
+                "Top": 0,
+                "Width": 0,
+                "Height": 13,
+                "Right": 13,
+                "Bottom": 13,
+                "toString": "{Left=13, Top=0, Width=0, Height=13}",
+                "X": 13,
+                "Y": 0,
+                "Size": {
+                  "Type": "Size",
+                  "Value": {
+                    "Width": 0,
+                    "Height": 13,
+                    "toString": "{Width=0, Height={1}}"
+                  }
+                },
+                "toJSON": {
+                  "Type": "object",
+                  "Value": {
+                    "Left": 13,
+                    "Top": 0,
+                    "Width": 0,
+                    "Height": 13
+                  }
+                }
+              }
+            },
+            "BorderColor": "FF000000",
+            "Shadow": "0,0,0",
+            "ShadowColor": "",
+            "WhiteSpace": 0,
+            "ScrollDirection": 0
+          },
+          {
+            "GetType": "function() {\r\n return \"HtmlControl\";\r\n}",
+            "Name": "HtmlControl12",
+            "Left": 25,
+            "Top": 0,
+            "Width": 1000,
+            "Height": 185,
+            "Visible": true,
+            "Dock": 0,
+            "TabIndex": 0,
+            "ZIndex": 0,
+            "Tag": null,
+            "FontFamily": "Microsoft YaHei",
+            "FontSize": 24,
+            "FontStyle": 0,
+            "Margin": {
+              "Type": "HtmlView.Rectangle",
+              "Value": {
+                "Left": 0,
+                "Top": 0,
+                "Width": 0,
+                "Height": 0,
+                "Right": 0,
+                "Bottom": 0,
+                "toString": "{Left=0, Top=0, Width=0, Height=0}",
+                "X": 0,
+                "Y": 0,
+                "Size": {
+                  "Type": "Size",
+                  "Value": {
+                    "Width": 0,
+                    "Height": 0,
+                    "toString": "{Width=0, Height={1}}"
+                  }
+                },
+                "toJSON": {
+                  "Type": "object",
+                  "Value": {
+                    "Left": 0,
+                    "Top": 0,
+                    "Width": 0,
+                    "Height": 0
+                  }
+                }
+              }
+            },
+            "Padding": {
+              "Type": "HtmlView.Rectangle",
+              "Value": {
+                "Left": 0,
+                "Top": 0,
+                "Width": 0,
+                "Height": 0,
+                "Right": 0,
+                "Bottom": 0,
+                "toString": "{Left=0, Top=0, Width=0, Height=0}",
+                "X": 0,
+                "Y": 0,
+                "Size": {
+                  "Type": "Size",
+                  "Value": {
+                    "Width": 0,
+                    "Height": 0,
+                    "toString": "{Width=0, Height={1}}"
+                  }
+                },
+                "toJSON": {
+                  "Type": "object",
+                  "Value": {
+                    "Left": 0,
+                    "Top": 0,
+                    "Width": 0,
+                    "Height": 0
+                  }
+                }
+              }
+            },
+            "ScrollMode": 0,
+            "Opacity": 1,
+            "Rotate": 0,
+            "BackgroundImage": "",
+            "BackgroundImageLayout": 3,
+            "Text": "",
+            "TextAlign": "center",
+            "LetterSpacing": 0,
+            "BackColor": "00ffffff",
+            "GradualChangeColor": "7fffffff",
+            "ForeColor": "FF000000",
+            "Controls": [],
+            "DataBindings": [],
+            "BorderWidth": {
+              "Type": "HtmlView.Rectangle",
+              "Value": {
+                "Left": 0,
+                "Top": 0,
+                "Width": 0,
+                "Height": 0,
+                "Right": 0,
+                "Bottom": 0,
+                "toString": "{Left=0, Top=0, Width=0, Height=0}",
+                "X": 0,
+                "Y": 0,
+                "Size": {
+                  "Type": "Size",
+                  "Value": {
+                    "Width": 0,
+                    "Height": 0,
+                    "toString": "{Width=0, Height={1}}"
+                  }
+                },
+                "toJSON": {
+                  "Type": "object",
+                  "Value": {
+                    "Left": 0,
+                    "Top": 0,
+                    "Width": 0,
+                    "Height": 0
+                  }
+                }
+              }
+            },
+            "BorderStyle": "dashed",
+            "BorderRadius": {
+              "Type": "HtmlView.Rectangle",
+              "Value": {
+                "Left": 0,
+                "Top": 0,
+                "Width": 0,
+                "Height": 0,
+                "Right": 0,
+                "Bottom": 0,
+                "toString": "{Left=0, Top=0, Width=0, Height=0}",
+                "X": 0,
+                "Y": 0,
+                "Size": {
+                  "Type": "Size",
+                  "Value": {
+                    "Width": 0,
+                    "Height": 0,
+                    "toString": "{Width=0, Height={1}}"
+                  }
+                },
+                "toJSON": {
+                  "Type": "object",
+                  "Value": {
+                    "Left": 0,
+                    "Top": 0,
+                    "Width": 0,
+                    "Height": 0
+                  }
+                }
+              }
+            },
+            "BorderColor": "FF000000",
+            "Shadow": "0,0,0",
+            "ShadowColor": "",
+            "WhiteSpace": 0,
+            "ScrollDirection": 0
+          },
+          {
+            "GetType": "function() {\r\n return \"HtmlControl\";\r\n}",
+            "Name": "HtmlControl20",
+            "Left": 152,
+            "Top": 285,
+            "Width": 191,
+            "Height": 43,
+            "Visible": true,
+            "Dock": 0,
+            "TabIndex": 0,
+            "ZIndex": 0,
+            "Tag": null,
+            "FontFamily": "Microsoft YaHei",
+            "FontSize": 43,
+            "FontStyle": 0,
+            "Margin": {
+              "Type": "HtmlView.Rectangle",
+              "Value": {
+                "Left": 0,
+                "Top": 0,
+                "Width": 0,
+                "Height": 0,
+                "Right": 0,
+                "Bottom": 0,
+                "toString": "{Left=0, Top=0, Width=0, Height=0}",
+                "X": 0,
+                "Y": 0,
+                "Size": {
+                  "Type": "Size",
+                  "Value": {
+                    "Width": 0,
+                    "Height": 0,
+                    "toString": "{Width=0, Height={1}}"
+                  }
+                },
+                "toJSON": {
+                  "Type": "object",
+                  "Value": {
+                    "Left": 0,
+                    "Top": 0,
+                    "Width": 0,
+                    "Height": 0
+                  }
+                }
+              }
+            },
+            "Padding": {
+              "Type": "HtmlView.Rectangle",
+              "Value": {
+                "Left": 0,
+                "Top": 0,
+                "Width": 0,
+                "Height": 0,
+                "Right": 0,
+                "Bottom": 0,
+                "toString": "{Left=0, Top=0, Width=0, Height=0}",
+                "X": 0,
+                "Y": 0,
+                "Size": {
+                  "Type": "Size",
+                  "Value": {
+                    "Width": 0,
+                    "Height": 0,
+                    "toString": "{Width=0, Height={1}}"
+                  }
+                },
+                "toJSON": {
+                  "Type": "object",
+                  "Value": {
+                    "Left": 0,
+                    "Top": 0,
+                    "Width": 0,
+                    "Height": 0
+                  }
+                }
+              }
+            },
+            "ScrollMode": 0,
+            "Opacity": 1,
+            "Rotate": 0,
+            "BackgroundImage": "",
+            "BackgroundImageLayout": 3,
+            "Text": "正在体检",
+            "TextAlign": "center",
+            "LetterSpacing": 0,
+            "BackColor": "ffffffff",
+            "GradualChangeColor": "7fffffff",
+            "ForeColor": "FF716065",
+            "Controls": [],
+            "DataBindings": [],
+            "BorderWidth": {
+              "Type": "HtmlView.Rectangle",
+              "Value": {
+                "Left": 0,
+                "Top": 0,
+                "Width": 0,
+                "Height": 0,
+                "Right": 0,
+                "Bottom": 0,
+                "toString": "{Left=0, Top=0, Width=0, Height=0}",
+                "X": 0,
+                "Y": 0,
+                "Size": {
+                  "Type": "Size",
+                  "Value": {
+                    "Width": 0,
+                    "Height": 0,
+                    "toString": "{Width=0, Height={1}}"
+                  }
+                },
+                "toJSON": {
+                  "Type": "object",
+                  "Value": {
+                    "Left": 0,
+                    "Top": 0,
+                    "Width": 0,
+                    "Height": 0
+                  }
+                }
+              }
+            },
+            "BorderStyle": "solid",
+            "BorderRadius": {
+              "Type": "HtmlView.Rectangle",
+              "Value": {
+                "Left": 0,
+                "Top": 0,
+                "Width": 0,
+                "Height": 0,
+                "Right": 0,
+                "Bottom": 0,
+                "toString": "{Left=0, Top=0, Width=0, Height=0}",
+                "X": 0,
+                "Y": 0,
+                "Size": {
+                  "Type": "Size",
+                  "Value": {
+                    "Width": 0,
+                    "Height": 0,
+                    "toString": "{Width=0, Height={1}}"
+                  }
+                },
+                "toJSON": {
+                  "Type": "object",
+                  "Value": {
+                    "Left": 0,
+                    "Top": 0,
+                    "Width": 0,
+                    "Height": 0
+                  }
+                }
+              }
+            },
+            "BorderColor": "FF000000",
+            "Shadow": "0,0,0",
+            "ShadowColor": "",
+            "WhiteSpace": 0,
+            "ScrollDirection": 0
+          },
+          {
+            "GetType": "function() {\r\n return \"HtmlControl\";\r\n}",
+            "Name": "HtmlControl21",
+            "Left": 152,
+            "Top": 490,
+            "Width": 191,
+            "Height": 43,
+            "Visible": true,
+            "Dock": 0,
+            "TabIndex": 0,
+            "ZIndex": 0,
+            "Tag": null,
+            "FontFamily": "Microsoft YaHei",
+            "FontSize": 43,
+            "FontStyle": 0,
+            "Margin": {
+              "Type": "HtmlView.Rectangle",
+              "Value": {
+                "Left": 0,
+                "Top": 0,
+                "Width": 0,
+                "Height": 0,
+                "Right": 0,
+                "Bottom": 0,
+                "toString": "{Left=0, Top=0, Width=0, Height=0}",
+                "X": 0,
+                "Y": 0,
+                "Size": {
+                  "Type": "Size",
+                  "Value": {
+                    "Width": 0,
+                    "Height": 0,
+                    "toString": "{Width=0, Height={1}}"
+                  }
+                },
+                "toJSON": {
+                  "Type": "object",
+                  "Value": {
+                    "Left": 0,
+                    "Top": 0,
+                    "Width": 0,
+                    "Height": 0
+                  }
+                }
+              }
+            },
+            "Padding": {
+              "Type": "HtmlView.Rectangle",
+              "Value": {
+                "Left": 0,
+                "Top": 0,
+                "Width": 0,
+                "Height": 0,
+                "Right": 0,
+                "Bottom": 0,
+                "toString": "{Left=0, Top=0, Width=0, Height=0}",
+                "X": 0,
+                "Y": 0,
+                "Size": {
+                  "Type": "Size",
+                  "Value": {
+                    "Width": 0,
+                    "Height": 0,
+                    "toString": "{Width=0, Height={1}}"
+                  }
+                },
+                "toJSON": {
+                  "Type": "object",
+                  "Value": {
+                    "Left": 0,
+                    "Top": 0,
+                    "Width": 0,
+                    "Height": 0
+                  }
+                }
+              }
+            },
+            "ScrollMode": 0,
+            "Opacity": 1,
+            "Rotate": 0,
+            "BackgroundImage": "",
+            "BackgroundImageLayout": 3,
+            "Text": "等待体检",
+            "TextAlign": "center",
+            "LetterSpacing": 0,
+            "BackColor": "ffffffff",
+            "GradualChangeColor": "7fffffff",
+            "ForeColor": "FF716065",
+            "Controls": [],
+            "DataBindings": [],
+            "BorderWidth": {
+              "Type": "HtmlView.Rectangle",
+              "Value": {
+                "Left": 0,
+                "Top": 0,
+                "Width": 0,
+                "Height": 0,
+                "Right": 0,
+                "Bottom": 0,
+                "toString": "{Left=0, Top=0, Width=0, Height=0}",
+                "X": 0,
+                "Y": 0,
+                "Size": {
+                  "Type": "Size",
+                  "Value": {
+                    "Width": 0,
+                    "Height": 0,
+                    "toString": "{Width=0, Height={1}}"
+                  }
+                },
+                "toJSON": {
+                  "Type": "object",
+                  "Value": {
+                    "Left": 0,
+                    "Top": 0,
+                    "Width": 0,
+                    "Height": 0
+                  }
+                }
+              }
+            },
+            "BorderStyle": "solid",
+            "BorderRadius": {
+              "Type": "HtmlView.Rectangle",
+              "Value": {
+                "Left": 0,
+                "Top": 0,
+                "Width": 0,
+                "Height": 0,
+                "Right": 0,
+                "Bottom": 0,
+                "toString": "{Left=0, Top=0, Width=0, Height=0}",
+                "X": 0,
+                "Y": 0,
+                "Size": {
+                  "Type": "Size",
+                  "Value": {
+                    "Width": 0,
+                    "Height": 0,
+                    "toString": "{Width=0, Height={1}}"
+                  }
+                },
+                "toJSON": {
+                  "Type": "object",
+                  "Value": {
+                    "Left": 0,
+                    "Top": 0,
+                    "Width": 0,
+                    "Height": 0
+                  }
+                }
+              }
+            },
+            "BorderColor": "FF71606A",
+            "Shadow": "0,0,0",
+            "ShadowColor": "",
+            "WhiteSpace": 0,
+            "ScrollDirection": 0
+          },
+          {
+            "GetType": "function() {\r\n return \"ListBox\";\r\n}",
+            "Name": "ListBox2",
+            "Left": 443,
+            "Top": 259.00001525878906,
+            "Width": 456,
+            "Height": 90,
+            "Visible": true,
+            "Dock": 0,
+            "TabIndex": 0,
+            "ZIndex": 0,
+            "Tag": null,
+            "FontFamily": "Microsoft YaHei",
+            "FontSize": 69,
+            "FontStyle": 1,
+            "Margin": {
+              "Type": "HtmlView.Rectangle",
+              "Value": {
+                "Left": 0,
+                "Top": 0,
+                "Width": 0,
+                "Height": 0,
+                "Right": 0,
+                "Bottom": 0,
+                "toString": "{Left=0, Top=0, Width=0, Height=0}",
+                "X": 0,
+                "Y": 0,
+                "Size": {
+                  "Type": "Size",
+                  "Value": {
+                    "Width": 0,
+                    "Height": 0,
+                    "toString": "{Width=0, Height={1}}"
+                  }
+                },
+                "toJSON": {
+                  "Type": "object",
+                  "Value": {
+                    "Left": 0,
+                    "Top": 0,
+                    "Width": 0,
+                    "Height": 0
+                  }
+                }
+              }
+            },
+            "Padding": {
+              "Type": "object",
+              "Value": {
+                "Left": 0,
+                "Top": 0,
+                "Width": 0,
+                "Height": 0
+              }
+            },
+            "ScrollMode": 0,
+            "Opacity": 1,
+            "Rotate": 0,
+            "BackgroundImage": "",
+            "BackgroundImageLayout": 3,
+            "Text": "",
+            "TextAlign": "center",
+            "LetterSpacing": 0,
+            "BackColor": "ffffffff",
+            "GradualChangeColor": "7fffffff",
+            "ForeColor": "FFFF9900",
+            "Controls": [],
+            "DataBindings": [],
+            "BorderWidth": {
+              "Type": "HtmlView.Rectangle",
+              "Value": {
+                "Left": 0,
+                "Top": 0,
+                "Width": 0,
+                "Height": 0,
+                "Right": 0,
+                "Bottom": 0,
+                "toString": "{Left=0, Top=0, Width=0, Height=0}",
+                "X": 0,
+                "Y": 0,
+                "Size": {
+                  "Type": "Size",
+                  "Value": {
+                    "Width": 0,
+                    "Height": 0,
+                    "toString": "{Width=0, Height={1}}"
+                  }
+                },
+                "toJSON": {
+                  "Type": "object",
+                  "Value": {
+                    "Left": 0,
+                    "Top": 0,
+                    "Width": 0,
+                    "Height": 0
+                  }
+                }
+              }
+            },
+            "BorderStyle": "solid",
+            "BorderRadius": {
+              "Type": "HtmlView.Rectangle",
+              "Value": {
+                "Left": 0,
+                "Top": 0,
+                "Width": 0,
+                "Height": 0,
+                "Right": 0,
+                "Bottom": 0,
+                "toString": "{Left=0, Top=0, Width=0, Height=0}",
+                "X": 0,
+                "Y": 0,
+                "Size": {
+                  "Type": "Size",
+                  "Value": {
+                    "Width": 0,
+                    "Height": 0,
+                    "toString": "{Width=0, Height={1}}"
+                  }
+                },
+                "toJSON": {
+                  "Type": "object",
+                  "Value": {
+                    "Left": 0,
+                    "Top": 0,
+                    "Width": 0,
+                    "Height": 0
+                  }
+                }
+              }
+            },
+            "BorderColor": "FF000000",
+            "Shadow": "0,0,0",
+            "ShadowColor": "",
+            "WhiteSpace": 0,
+            "ScrollDirection": 0,
+            "RowItemCount": 1,
+            "Items": {
+              "0": {
+                "GetType": "function() {\r\n return \"ListBoxItem\";\r\n}",
+                "Index": 0,
+                "Name": "LXY",
+                "Time": 0
+              },
+              "length": 1
+            },
+            "ItemStyle": {
+              "Type": "ListBoxItemStyle",
+              "Value": {
+                "GetType": "function() {\r\n return \"ListBox\";\r\n}",
+                "Index": {
+                  "Type": "ListBoxItemPropertyStyle",
+                  "Value": {
+                    "GetType": "function() {\r\n return \"ListBox\";\r\n}",
+                    "Width": "auto",
+                    "Visible": false,
+                    "Padding": "0,0,0,0",
+                    "Margin": "0,0,0,0",
+                    "FontSize": 69,
+                    "ForeColor": "ffffe599",
+                    "BackColor": "ffffff",
+                    "BorderRadius": "5,5,5,5",
+                    "TextAlign": "left"
+                  }
+                },
+                "Name": {
+                  "Type": "ListBoxItemPropertyStyle",
+                  "Value": {
+                    "GetType": "function() {\r\n return \"ListBox\";\r\n}",
+                    "Width": "auto",
+                    "Visible": true,
+                    "Padding": "0,0,0,0",
+                    "Margin": "0,0,0,0",
+                    "FontSize": 69,
+                    "ForeColor": "FFFF9900",
+                    "BackColor": "ffffff",
+                    "BorderRadius": "0,0,0,0",
+                    "TextAlign": "left"
+                  }
+                },
+                "Time": {
+                  "Type": "ListBoxItemPropertyStyle",
+                  "Value": {
+                    "GetType": "function() {\r\n return \"ListBox\";\r\n}",
+                    "Width": "auto",
+                    "Visible": true,
+                    "Padding": "5,10,5,10",
+                    "Margin": "25,0,0,0",
+                    "FontSize": 30,
+                    "ForeColor": "ffffffff",
+                    "BackColor": "ff000000",
+                    "BorderRadius": "5,5,5,5",
+                    "TextAlign": "left"
+                  }
+                }
+              }
+            },
+            "TimeMargin": {
+              "Type": "object",
+              "Value": {
+                "Left": 0,
+                "Top": 0,
+                "Width": 0,
+                "Height": 0
+              }
+            }
+          }
+        ],
+        "DataBindings": [],
+        "BorderWidth": {
+          "Type": "HtmlView.Rectangle",
+          "Value": {
+            "Left": 0,
+            "Top": 0,
+            "Width": 0,
+            "Height": 0,
+            "Right": 0,
+            "Bottom": 0,
+            "toString": "{Left=0, Top=0, Width=0, Height=0}",
+            "X": 0,
+            "Y": 0,
+            "Size": {
+              "Type": "Size",
+              "Value": {
+                "Width": 0,
+                "Height": 0,
+                "toString": "{Width=0, Height={1}}"
+              }
+            },
+            "toJSON": {
+              "Type": "object",
+              "Value": {
+                "Left": 0,
+                "Top": 0,
+                "Width": 0,
+                "Height": 0
+              }
+            }
+          }
+        },
+        "BorderStyle": "solid",
+        "BorderRadius": {
+          "Type": "HtmlView.Rectangle",
+          "Value": {
+            "Left": 8,
+            "Top": 8,
+            "Width": 8,
+            "Height": 8,
+            "Right": 16,
+            "Bottom": 16,
+            "toString": "{Left=8, Top=8, Width=8, Height=8}",
+            "X": 8,
+            "Y": 8,
+            "Size": {
+              "Type": "Size",
+              "Value": {
+                "Width": 8,
+                "Height": 8,
+                "toString": "{Width=8, Height={1}}"
+              }
+            },
+            "toJSON": {
+              "Type": "object",
+              "Value": {
+                "Left": 8,
+                "Top": 8,
+                "Width": 8,
+                "Height": 8
+              }
+            }
+          }
+        },
+        "BorderColor": "FFFFFFFF",
+        "Shadow": "0,0,0",
+        "ShadowColor": "",
+        "WhiteSpace": 0,
+        "ScrollDirection": 0
+      },
+      {
+        "GetType": "function() {\r\n return \"HtmlControl\";\r\n}",
+        "Name": "HtmlControl4",
+        "Left": 13,
+        "Top": 1003.0000381469727,
+        "Width": 1053,
+        "Height": 816,
+        "Visible": true,
+        "Dock": 0,
+        "TabIndex": 0,
+        "ZIndex": 0,
+        "Tag": null,
+        "FontFamily": "Microsoft YaHei",
+        "FontSize": 48,
+        "FontStyle": 0,
+        "Margin": {
+          "Type": "HtmlView.Rectangle",
+          "Value": {
+            "Left": 0,
+            "Top": 0,
+            "Width": 0,
+            "Height": 0,
+            "Right": 0,
+            "Bottom": 0,
+            "toString": "{Left=0, Top=0, Width=0, Height=0}",
+            "X": 0,
+            "Y": 0,
+            "Size": {
+              "Type": "Size",
+              "Value": {
+                "Width": 0,
+                "Height": 0,
+                "toString": "{Width=0, Height={1}}"
+              }
+            },
+            "toJSON": {
+              "Type": "object",
+              "Value": {
+                "Left": 0,
+                "Top": 0,
+                "Width": 0,
+                "Height": 0
+              }
+            }
+          }
+        },
+        "Padding": {
+          "Type": "HtmlView.Rectangle",
+          "Value": {
+            "Left": 0,
+            "Top": 0,
+            "Width": 0,
+            "Height": 0,
+            "Right": 0,
+            "Bottom": 0,
+            "toString": "{Left=0, Top=0, Width=0, Height=0}",
+            "X": 0,
+            "Y": 0,
+            "Size": {
+              "Type": "Size",
+              "Value": {
+                "Width": 0,
+                "Height": 0,
+                "toString": "{Width=0, Height={1}}"
+              }
+            },
+            "toJSON": {
+              "Type": "object",
+              "Value": {
+                "Left": 0,
+                "Top": 0,
+                "Width": 0,
+                "Height": 0
+              }
+            }
+          }
+        },
+        "ScrollMode": 0,
+        "Opacity": 1,
+        "Rotate": 0,
+        "BackgroundImage": "",
+        "BackgroundImageLayout": 3,
+        "Text": "",
+        "TextAlign": "center",
+        "LetterSpacing": 0,
+        "BackColor": "ffffffff",
+        "GradualChangeColor": "7fffffff",
+        "ForeColor": "FF000000",
+        "Controls": [
+          {
+            "GetType": "function() {\r\n return \"HtmlControl\";\r\n}",
+            "Name": "HtmlControl13",
+            "Left": 72,
+            "Top": 76,
+            "Width": 485,
+            "Height": 646,
+            "Visible": true,
+            "Dock": 0,
+            "TabIndex": 0,
+            "ZIndex": 0,
+            "Tag": null,
+            "FontFamily": "Microsoft YaHei",
+            "FontSize": 24,
+            "FontStyle": 0,
+            "Margin": {
+              "Type": "HtmlView.Rectangle",
+              "Value": {
+                "Left": 0,
+                "Top": 0,
+                "Width": 0,
+                "Height": 0,
+                "Right": 0,
+                "Bottom": 0,
+                "toString": "{Left=0, Top=0, Width=0, Height=0}",
+                "X": 0,
+                "Y": 0,
+                "Size": {
+                  "Type": "Size",
+                  "Value": {
+                    "Width": 0,
+                    "Height": 0,
+                    "toString": "{Width=0, Height={1}}"
+                  }
+                },
+                "toJSON": {
+                  "Type": "object",
+                  "Value": {
+                    "Left": 0,
+                    "Top": 0,
+                    "Width": 0,
+                    "Height": 0
+                  }
+                }
+              }
+            },
+            "Padding": {
+              "Type": "HtmlView.Rectangle",
+              "Value": {
+                "Left": 0,
+                "Top": 0,
+                "Width": 0,
+                "Height": 0,
+                "Right": 0,
+                "Bottom": 0,
+                "toString": "{Left=0, Top=0, Width=0, Height=0}",
+                "X": 0,
+                "Y": 0,
+                "Size": {
+                  "Type": "Size",
+                  "Value": {
+                    "Width": 0,
+                    "Height": 0,
+                    "toString": "{Width=0, Height={1}}"
+                  }
+                },
+                "toJSON": {
+                  "Type": "object",
+                  "Value": {
+                    "Left": 0,
+                    "Top": 0,
+                    "Width": 0,
+                    "Height": 0
+                  }
+                }
+              }
+            },
+            "ScrollMode": 0,
+            "Opacity": 1,
+            "Rotate": 0,
+            "BackgroundImage": "",
+            "BackgroundImageLayout": 3,
+            "Text": "",
+            "TextAlign": "center",
+            "LetterSpacing": 0,
+            "BackColor": "fffff2cc",
+            "GradualChangeColor": "7fffffff",
+            "ForeColor": "FF000000",
+            "Controls": [],
+            "DataBindings": [],
+            "BorderWidth": {
+              "Type": "HtmlView.Rectangle",
+              "Value": {
+                "Left": 0,
+                "Top": 0,
+                "Width": 0,
+                "Height": 0,
+                "Right": 0,
+                "Bottom": 0,
+                "toString": "{Left=0, Top=0, Width=0, Height=0}",
+                "X": 0,
+                "Y": 0,
+                "Size": {
+                  "Type": "Size",
+                  "Value": {
+                    "Width": 0,
+                    "Height": 0,
+                    "toString": "{Width=0, Height={1}}"
+                  }
+                },
+                "toJSON": {
+                  "Type": "object",
+                  "Value": {
+                    "Left": 0,
+                    "Top": 0,
+                    "Width": 0,
+                    "Height": 0
+                  }
+                }
+              }
+            },
+            "BorderStyle": "solid",
+            "BorderRadius": {
+              "Type": "HtmlView.Rectangle",
+              "Value": {
+                "Left": 0,
+                "Top": 0,
+                "Width": 0,
+                "Height": 0,
+                "Right": 0,
+                "Bottom": 0,
+                "toString": "{Left=0, Top=0, Width=0, Height=0}",
+                "X": 0,
+                "Y": 0,
+                "Size": {
+                  "Type": "Size",
+                  "Value": {
+                    "Width": 0,
+                    "Height": 0,
+                    "toString": "{Width=0, Height={1}}"
+                  }
+                },
+                "toJSON": {
+                  "Type": "object",
+                  "Value": {
+                    "Left": 0,
+                    "Top": 0,
+                    "Width": 0,
+                    "Height": 0
+                  }
+                }
+              }
+            },
+            "BorderColor": "FF000000",
+            "Shadow": "0,0,0",
+            "ShadowColor": "",
+            "WhiteSpace": 0,
+            "ScrollDirection": 0
+          },
+          {
+            "GetType": "function() {\r\n return \"HtmlControl\";\r\n}",
+            "Name": "HtmlControl14",
+            "Left": 618.984375,
+            "Top": 76.984375,
+            "Width": 120,
+            "Height": 50,
+            "Visible": true,
+            "Dock": 0,
+            "TabIndex": 0,
+            "ZIndex": 0,
+            "Tag": null,
+            "FontFamily": "Microsoft YaHei",
+            "FontSize": 50,
+            "FontStyle": 0,
+            "Margin": {
+              "Type": "HtmlView.Rectangle",
+              "Value": {
+                "Left": 0,
+                "Top": 0,
+                "Width": 0,
+                "Height": 0,
+                "Right": 0,
+                "Bottom": 0,
+                "toString": "{Left=0, Top=0, Width=0, Height=0}",
+                "X": 0,
+                "Y": 0,
+                "Size": {
+                  "Type": "Size",
+                  "Value": {
+                    "Width": 0,
+                    "Height": 0,
+                    "toString": "{Width=0, Height={1}}"
+                  }
+                },
+                "toJSON": {
+                  "Type": "object",
+                  "Value": {
+                    "Left": 0,
+                    "Top": 0,
+                    "Width": 0,
+                    "Height": 0
+                  }
+                }
+              }
+            },
+            "Padding": {
+              "Type": "HtmlView.Rectangle",
+              "Value": {
+                "Left": 0,
+                "Top": 0,
+                "Width": 0,
+                "Height": 0,
+                "Right": 0,
+                "Bottom": 0,
+                "toString": "{Left=0, Top=0, Width=0, Height=0}",
+                "X": 0,
+                "Y": 0,
+                "Size": {
+                  "Type": "Size",
+                  "Value": {
+                    "Width": 0,
+                    "Height": 0,
+                    "toString": "{Width=0, Height={1}}"
+                  }
+                },
+                "toJSON": {
+                  "Type": "object",
+                  "Value": {
+                    "Left": 0,
+                    "Top": 0,
+                    "Width": 0,
+                    "Height": 0
+                  }
+                }
+              }
+            },
+            "ScrollMode": 0,
+            "Opacity": 1,
+            "Rotate": 0,
+            "BackgroundImage": "",
+            "BackgroundImageLayout": 3,
+            "Text": "LXY",
+            "TextAlign": "center",
+            "LetterSpacing": 0,
+            "BackColor": "ffffffff",
+            "GradualChangeColor": "7fffffff",
+            "ForeColor": "FF4E3E48",
+            "Controls": [],
+            "DataBindings": [],
+            "BorderWidth": {
+              "Type": "HtmlView.Rectangle",
+              "Value": {
+                "Left": 0,
+                "Top": 0,
+                "Width": 0,
+                "Height": 0,
+                "Right": 0,
+                "Bottom": 0,
+                "toString": "{Left=0, Top=0, Width=0, Height=0}",
+                "X": 0,
+                "Y": 0,
+                "Size": {
+                  "Type": "Size",
+                  "Value": {
+                    "Width": 0,
+                    "Height": 0,
+                    "toString": "{Width=0, Height={1}}"
+                  }
+                },
+                "toJSON": {
+                  "Type": "object",
+                  "Value": {
+                    "Left": 0,
+                    "Top": 0,
+                    "Width": 0,
+                    "Height": 0
+                  }
+                }
+              }
+            },
+            "BorderStyle": "solid",
+            "BorderRadius": {
+              "Type": "HtmlView.Rectangle",
+              "Value": {
+                "Left": 0,
+                "Top": 0,
+                "Width": 0,
+                "Height": 0,
+                "Right": 0,
+                "Bottom": 0,
+                "toString": "{Left=0, Top=0, Width=0, Height=0}",
+                "X": 0,
+                "Y": 0,
+                "Size": {
+                  "Type": "Size",
+                  "Value": {
+                    "Width": 0,
+                    "Height": 0,
+                    "toString": "{Width=0, Height={1}}"
+                  }
+                },
+                "toJSON": {
+                  "Type": "object",
+                  "Value": {
+                    "Left": 0,
+                    "Top": 0,
+                    "Width": 0,
+                    "Height": 0
+                  }
+                }
+              }
+            },
+            "BorderColor": "FF000000",
+            "Shadow": "0,0,0",
+            "ShadowColor": "",
+            "WhiteSpace": 0,
+            "ScrollDirection": 0
+          }
+        ],
+        "DataBindings": [],
+        "BorderWidth": {
+          "Type": "HtmlView.Rectangle",
+          "Value": {
+            "Left": 0,
+            "Top": 0,
+            "Width": 0,
+            "Height": 0,
+            "Right": 0,
+            "Bottom": 0,
+            "toString": "{Left=0, Top=0, Width=0, Height=0}",
+            "X": 0,
+            "Y": 0,
+            "Size": {
+              "Type": "Size",
+              "Value": {
+                "Width": 0,
+                "Height": 0,
+                "toString": "{Width=0, Height={1}}"
+              }
+            },
+            "toJSON": {
+              "Type": "object",
+              "Value": {
+                "Left": 0,
+                "Top": 0,
+                "Width": 0,
+                "Height": 0
+              }
+            }
+          }
+        },
+        "BorderStyle": "solid",
+        "BorderRadius": {
+          "Type": "HtmlView.Rectangle",
+          "Value": {
+            "Left": 8,
+            "Top": 8,
+            "Width": 8,
+            "Height": 8,
+            "Right": 16,
+            "Bottom": 16,
+            "toString": "{Left=8, Top=8, Width=8, Height=8}",
+            "X": 8,
+            "Y": 8,
+            "Size": {
+              "Type": "Size",
+              "Value": {
+                "Width": 8,
+                "Height": 8,
+                "toString": "{Width=8, Height={1}}"
+              }
+            },
+            "toJSON": {
+              "Type": "object",
+              "Value": {
+                "Left": 8,
+                "Top": 8,
+                "Width": 8,
+                "Height": 8
+              }
+            }
+          }
+        },
+        "BorderColor": "FFFFFFFF",
+        "Shadow": "0,0,0",
+        "ShadowColor": "",
+        "WhiteSpace": 0,
+        "ScrollDirection": 0
+      },
+      {
+        "GetType": "function() {\r\n return \"HtmlControl\";\r\n}",
+        "Name": "HtmlControl15",
+        "Left": 635,
+        "Top": 1156,
+        "Width": 100,
+        "Height": 37,
+        "Visible": true,
+        "Dock": 0,
+        "TabIndex": 0,
+        "ZIndex": 0,
+        "Tag": null,
+        "FontFamily": "Microsoft YaHei",
+        "FontSize": 37,
+        "FontStyle": 0,
+        "Margin": {
+          "Type": "HtmlView.Rectangle",
+          "Value": {
+            "Left": 0,
+            "Top": 0,
+            "Width": 0,
+            "Height": 0,
+            "Right": 0,
+            "Bottom": 0,
+            "toString": "{Left=0, Top=0, Width=0, Height=0}",
+            "X": 0,
+            "Y": 0,
+            "Size": {
+              "Type": "Size",
+              "Value": {
+                "Width": 0,
+                "Height": 0,
+                "toString": "{Width=0, Height={1}}"
+              }
+            },
+            "toJSON": {
+              "Type": "object",
+              "Value": {
+                "Left": 0,
+                "Top": 0,
+                "Width": 0,
+                "Height": 0
+              }
+            }
+          }
+        },
+        "Padding": {
+          "Type": "HtmlView.Rectangle",
+          "Value": {
+            "Left": 0,
+            "Top": 0,
+            "Width": 0,
+            "Height": 0,
+            "Right": 0,
+            "Bottom": 0,
+            "toString": "{Left=0, Top=0, Width=0, Height=0}",
+            "X": 0,
+            "Y": 0,
+            "Size": {
+              "Type": "Size",
+              "Value": {
+                "Width": 0,
+                "Height": 0,
+                "toString": "{Width=0, Height={1}}"
+              }
+            },
+            "toJSON": {
+              "Type": "object",
+              "Value": {
+                "Left": 0,
+                "Top": 0,
+                "Width": 0,
+                "Height": 0
+              }
+            }
+          }
+        },
+        "ScrollMode": 0,
+        "Opacity": 1,
+        "Rotate": 0,
+        "BackgroundImage": "",
+        "BackgroundImageLayout": 3,
+        "Text": "院长",
+        "TextAlign": "center",
+        "LetterSpacing": 0,
+        "BackColor": "ffffffff",
+        "GradualChangeColor": "7fffffff",
+        "ForeColor": "FF71606A",
+        "Controls": [],
+        "DataBindings": [],
+        "BorderWidth": {
+          "Type": "HtmlView.Rectangle",
+          "Value": {
+            "Left": 0,
+            "Top": 0,
+            "Width": 0,
+            "Height": 0,
+            "Right": 0,
+            "Bottom": 0,
+            "toString": "{Left=0, Top=0, Width=0, Height=0}",
+            "X": 0,
+            "Y": 0,
+            "Size": {
+              "Type": "Size",
+              "Value": {
+                "Width": 0,
+                "Height": 0,
+                "toString": "{Width=0, Height={1}}"
+              }
+            },
+            "toJSON": {
+              "Type": "object",
+              "Value": {
+                "Left": 0,
+                "Top": 0,
+                "Width": 0,
+                "Height": 0
+              }
+            }
+          }
+        },
+        "BorderStyle": "solid",
+        "BorderRadius": {
+          "Type": "HtmlView.Rectangle",
+          "Value": {
+            "Left": 0,
+            "Top": 0,
+            "Width": 0,
+            "Height": 0,
+            "Right": 0,
+            "Bottom": 0,
+            "toString": "{Left=0, Top=0, Width=0, Height=0}",
+            "X": 0,
+            "Y": 0,
+            "Size": {
+              "Type": "Size",
+              "Value": {
+                "Width": 0,
+                "Height": 0,
+                "toString": "{Width=0, Height={1}}"
+              }
+            },
+            "toJSON": {
+              "Type": "object",
+              "Value": {
+                "Left": 0,
+                "Top": 0,
+                "Width": 0,
+                "Height": 0
+              }
+            }
+          }
+        },
+        "BorderColor": "FF000000",
+        "Shadow": "0,0,0",
+        "ShadowColor": "",
+        "WhiteSpace": 0,
+        "ScrollDirection": 0
+      },
+      {
+        "GetType": "function() {\r\n return \"HtmlControl\";\r\n}",
+        "Name": "HtmlControl16",
+        "Left": 634,
+        "Top": 1226,
+        "Width": 398,
+        "Height": 500,
+        "Visible": true,
+        "Dock": 0,
+        "TabIndex": 0,
+        "ZIndex": 0,
+        "Tag": null,
+        "FontFamily": "Microsoft YaHei",
+        "FontSize": 24,
+        "FontStyle": 0,
+        "Margin": {
+          "Type": "HtmlView.Rectangle",
+          "Value": {
+            "Left": 0,
+            "Top": 0,
+            "Width": 0,
+            "Height": 0,
+            "Right": 0,
+            "Bottom": 0,
+            "toString": "{Left=0, Top=0, Width=0, Height=0}",
+            "X": 0,
+            "Y": 0,
+            "Size": {
+              "Type": "Size",
+              "Value": {
+                "Width": 0,
+                "Height": 0,
+                "toString": "{Width=0, Height={1}}"
+              }
+            },
+            "toJSON": {
+              "Type": "object",
+              "Value": {
+                "Left": 0,
+                "Top": 0,
+                "Width": 0,
+                "Height": 0
+              }
+            }
+          }
+        },
+        "Padding": {
+          "Type": "HtmlView.Rectangle",
+          "Value": {
+            "Left": 0,
+            "Top": 0,
+            "Width": 0,
+            "Height": 0,
+            "Right": 0,
+            "Bottom": 0,
+            "toString": "{Left=0, Top=0, Width=0, Height=0}",
+            "X": 0,
+            "Y": 0,
+            "Size": {
+              "Type": "Size",
+              "Value": {
+                "Width": 0,
+                "Height": 0,
+                "toString": "{Width=0, Height={1}}"
+              }
+            },
+            "toJSON": {
+              "Type": "object",
+              "Value": {
+                "Left": 0,
+                "Top": 0,
+                "Width": 0,
+                "Height": 0
+              }
+            }
+          }
+        },
+        "ScrollMode": 0,
+        "Opacity": 1,
+        "Rotate": 0,
+        "BackgroundImage": "",
+        "BackgroundImageLayout": 3,
+        "Text": "",
+        "TextAlign": "center",
+        "LetterSpacing": 0,
+        "BackColor": "fff4cccc",
+        "GradualChangeColor": "7fffffff",
+        "ForeColor": "FF000000",
+        "Controls": [],
+        "DataBindings": [],
+        "BorderWidth": {
+          "Type": "HtmlView.Rectangle",
+          "Value": {
+            "Left": 0,
+            "Top": 0,
+            "Width": 0,
+            "Height": 0,
+            "Right": 0,
+            "Bottom": 0,
+            "toString": "{Left=0, Top=0, Width=0, Height=0}",
+            "X": 0,
+            "Y": 0,
+            "Size": {
+              "Type": "Size",
+              "Value": {
+                "Width": 0,
+                "Height": 0,
+                "toString": "{Width=0, Height={1}}"
+              }
+            },
+            "toJSON": {
+              "Type": "object",
+              "Value": {
+                "Left": 0,
+                "Top": 0,
+                "Width": 0,
+                "Height": 0
+              }
+            }
+          }
+        },
+        "BorderStyle": "solid",
+        "BorderRadius": {
+          "Type": "HtmlView.Rectangle",
+          "Value": {
+            "Left": 0,
+            "Top": 0,
+            "Width": 0,
+            "Height": 0,
+            "Right": 0,
+            "Bottom": 0,
+            "toString": "{Left=0, Top=0, Width=0, Height=0}",
+            "X": 0,
+            "Y": 0,
+            "Size": {
+              "Type": "Size",
+              "Value": {
+                "Width": 0,
+                "Height": 0,
+                "toString": "{Width=0, Height={1}}"
+              }
+            },
+            "toJSON": {
+              "Type": "object",
+              "Value": {
+                "Left": 0,
+                "Top": 0,
+                "Width": 0,
+                "Height": 0
+              }
+            }
+          }
+        },
+        "BorderColor": "FF000000",
+        "Shadow": "0,0,0",
+        "ShadowColor": "",
+        "WhiteSpace": 0,
+        "ScrollDirection": 0
+      },
+      {
+        "GetType": "function() {\r\n return \"HtmlControl\";\r\n}",
+        "Name": "HtmlControl17",
+        "Left": 43,
+        "Top": 351,
+        "Width": 999,
+        "Height": 20,
+        "Visible": true,
+        "Dock": 0,
+        "TabIndex": 0,
+        "ZIndex": 0,
+        "Tag": null,
+        "FontFamily": "Microsoft YaHei",
+        "FontSize": 24,
+        "FontStyle": 0,
+        "Margin": {
+          "Type": "HtmlView.Rectangle",
+          "Value": {
+            "Left": 0,
+            "Top": 0,
+            "Width": 0,
+            "Height": 0,
+            "Right": 0,
+            "Bottom": 0,
+            "toString": "{Left=0, Top=0, Width=0, Height=0}",
+            "X": 0,
+            "Y": 0,
+            "Size": {
+              "Type": "Size",
+              "Value": {
+                "Width": 0,
+                "Height": 0,
+                "toString": "{Width=0, Height={1}}"
+              }
+            },
+            "toJSON": {
+              "Type": "object",
+              "Value": {
+                "Left": 0,
+                "Top": 0,
+                "Width": 0,
+                "Height": 0
+              }
+            }
+          }
+        },
+        "Padding": {
+          "Type": "HtmlView.Rectangle",
+          "Value": {
+            "Left": 0,
+            "Top": 0,
+            "Width": 0,
+            "Height": 0,
+            "Right": 0,
+            "Bottom": 0,
+            "toString": "{Left=0, Top=0, Width=0, Height=0}",
+            "X": 0,
+            "Y": 0,
+            "Size": {
+              "Type": "Size",
+              "Value": {
+                "Width": 0,
+                "Height": 0,
+                "toString": "{Width=0, Height={1}}"
+              }
+            },
+            "toJSON": {
+              "Type": "object",
+              "Value": {
+                "Left": 0,
+                "Top": 0,
+                "Width": 0,
+                "Height": 0
+              }
+            }
+          }
+        },
+        "ScrollMode": 0,
+        "Opacity": 1,
+        "Rotate": 0,
+        "BackgroundImage": "",
+        "BackgroundImageLayout": 3,
+        "Text": "",
+        "TextAlign": "center",
+        "LetterSpacing": 0,
+        "BackColor": "ffffffff",
+        "GradualChangeColor": "7fffffff",
+        "ForeColor": "FF000000",
+        "Controls": [],
+        "DataBindings": [],
+        "BorderWidth": {
+          "Type": "HtmlView.Rectangle",
+          "Value": {
+            "Left": 0,
+            "Top": 0,
+            "Width": 0,
+            "Height": 1,
+            "Right": 0,
+            "Bottom": 1,
+            "toString": "{Left=0, Top=0, Width=0, Height=1}",
+            "X": 0,
+            "Y": 0,
+            "Size": {
+              "Type": "Size",
+              "Value": {
+                "Width": 0,
+                "Height": 1,
+                "toString": "{Width=0, Height={1}}"
+              }
+            },
+            "toJSON": {
+              "Type": "object",
+              "Value": {
+                "Left": 0,
+                "Top": 0,
+                "Width": 0,
+                "Height": 1
+              }
+            }
+          }
+        },
+        "BorderStyle": "dashed",
+        "BorderRadius": {
+          "Type": "HtmlView.Rectangle",
+          "Value": {
+            "Left": 0,
+            "Top": 0,
+            "Width": 0,
+            "Height": 0,
+            "Right": 0,
+            "Bottom": 0,
+            "toString": "{Left=0, Top=0, Width=0, Height=0}",
+            "X": 0,
+            "Y": 0,
+            "Size": {
+              "Type": "Size",
+              "Value": {
+                "Width": 0,
+                "Height": 0,
+                "toString": "{Width=0, Height={1}}"
+              }
+            },
+            "toJSON": {
+              "Type": "object",
+              "Value": {
+                "Left": 0,
+                "Top": 0,
+                "Width": 0,
+                "Height": 0
+              }
+            }
+          }
+        },
+        "BorderColor": "FF000000",
+        "Shadow": "0,0,0",
+        "ShadowColor": "",
+        "WhiteSpace": 0,
+        "ScrollDirection": 0
+      },
+      {
+        "GetType": "function() {\r\n return \"HtmlControl\";\r\n}",
+        "Name": "HtmlControl18",
+        "Left": 39,
+        "Top": 403,
+        "Width": 999,
+        "Height": 100,
+        "Visible": false,
+        "Dock": 0,
+        "TabIndex": 0,
+        "ZIndex": 0,
+        "Tag": null,
+        "FontFamily": "Microsoft YaHei",
+        "FontSize": 24,
+        "FontStyle": 0,
+        "Margin": {
+          "Type": "HtmlView.Rectangle",
+          "Value": {
+            "Left": 0,
+            "Top": 0,
+            "Width": 0,
+            "Height": 0,
+            "Right": 0,
+            "Bottom": 0,
+            "toString": "{Left=0, Top=0, Width=0, Height=0}",
+            "X": 0,
+            "Y": 0,
+            "Size": {
+              "Type": "Size",
+              "Value": {
+                "Width": 0,
+                "Height": 0,
+                "toString": "{Width=0, Height={1}}"
+              }
+            },
+            "toJSON": {
+              "Type": "object",
+              "Value": {
+                "Left": 0,
+                "Top": 0,
+                "Width": 0,
+                "Height": 0
+              }
+            }
+          }
+        },
+        "Padding": {
+          "Type": "HtmlView.Rectangle",
+          "Value": {
+            "Left": 0,
+            "Top": 0,
+            "Width": 0,
+            "Height": 0,
+            "Right": 0,
+            "Bottom": 0,
+            "toString": "{Left=0, Top=0, Width=0, Height=0}",
+            "X": 0,
+            "Y": 0,
+            "Size": {
+              "Type": "Size",
+              "Value": {
+                "Width": 0,
+                "Height": 0,
+                "toString": "{Width=0, Height={1}}"
+              }
+            },
+            "toJSON": {
+              "Type": "object",
+              "Value": {
+                "Left": 0,
+                "Top": 0,
+                "Width": 0,
+                "Height": 0
+              }
+            }
+          }
+        },
+        "ScrollMode": 0,
+        "Opacity": 1,
+        "Rotate": 0,
+        "BackgroundImage": "",
+        "BackgroundImageLayout": 3,
+        "Text": "",
+        "TextAlign": "center",
+        "LetterSpacing": 0,
+        "BackColor": "ffffffff",
+        "GradualChangeColor": "7fffffff",
+        "ForeColor": "FF000000",
+        "Controls": [],
+        "DataBindings": [],
+        "BorderWidth": {
+          "Type": "HtmlView.Rectangle",
+          "Value": {
+            "Left": 1,
+            "Top": 1,
+            "Width": 1,
+            "Height": 1,
+            "Right": 2,
+            "Bottom": 2,
+            "toString": "{Left=1, Top=1, Width=1, Height=1}",
+            "X": 1,
+            "Y": 1,
+            "Size": {
+              "Type": "Size",
+              "Value": {
+                "Width": 1,
+                "Height": 1,
+                "toString": "{Width=1, Height={1}}"
+              }
+            },
+            "toJSON": {
+              "Type": "object",
+              "Value": {
+                "Left": 1,
+                "Top": 1,
+                "Width": 1,
+                "Height": 1
+              }
+            }
+          }
+        },
+        "BorderStyle": "dashed",
+        "BorderRadius": {
+          "Type": "HtmlView.Rectangle",
+          "Value": {
+            "Left": 0,
+            "Top": 0,
+            "Width": 0,
+            "Height": 0,
+            "Right": 0,
+            "Bottom": 0,
+            "toString": "{Left=0, Top=0, Width=0, Height=0}",
+            "X": 0,
+            "Y": 0,
+            "Size": {
+              "Type": "Size",
+              "Value": {
+                "Width": 0,
+                "Height": 0,
+                "toString": "{Width=0, Height={1}}"
+              }
+            },
+            "toJSON": {
+              "Type": "object",
+              "Value": {
+                "Left": 0,
+                "Top": 0,
+                "Width": 0,
+                "Height": 0
+              }
+            }
+          }
+        },
+        "BorderColor": "FF000000",
+        "Shadow": "0,0,0",
+        "ShadowColor": "",
+        "WhiteSpace": 0,
+        "ScrollDirection": 0
+      },
+      {
+        "GetType": "function() {\r\n return \"HtmlControl\";\r\n}",
+        "Name": "HtmlControl19",
+        "Left": 0,
+        "Top": 1818.020834,
+        "Width": 1080,
+        "Height": 100,
+        "Visible": true,
+        "Dock": 0,
+        "TabIndex": 0,
+        "ZIndex": 0,
+        "Tag": null,
+        "FontFamily": "Microsoft YaHei",
+        "FontSize": 39,
+        "FontStyle": 0,
+        "Margin": {
+          "Type": "HtmlView.Rectangle",
+          "Value": {
+            "Left": 0,
+            "Top": 0,
+            "Width": 0,
+            "Height": 0,
+            "Right": 0,
+            "Bottom": 0,
+            "toString": "{Left=0, Top=0, Width=0, Height=0}",
+            "X": 0,
+            "Y": 0,
+            "Size": {
+              "Type": "Size",
+              "Value": {
+                "Width": 0,
+                "Height": 0,
+                "toString": "{Width=0, Height={1}}"
+              }
+            },
+            "toJSON": {
+              "Type": "object",
+              "Value": {
+                "Left": 0,
+                "Top": 0,
+                "Width": 0,
+                "Height": 0
+              }
+            }
+          }
+        },
+        "Padding": {
+          "Type": "HtmlView.Rectangle",
+          "Value": {
+            "Left": 0,
+            "Top": 0,
+            "Width": 0,
+            "Height": 0,
+            "Right": 0,
+            "Bottom": 0,
+            "toString": "{Left=0, Top=0, Width=0, Height=0}",
+            "X": 0,
+            "Y": 0,
+            "Size": {
+              "Type": "Size",
+              "Value": {
+                "Width": 0,
+                "Height": 0,
+                "toString": "{Width=0, Height={1}}"
+              }
+            },
+            "toJSON": {
+              "Type": "object",
+              "Value": {
+                "Left": 0,
+                "Top": 0,
+                "Width": 0,
+                "Height": 0
+              }
+            }
+          }
+        },
+        "ScrollMode": 0,
+        "Opacity": 1,
+        "Rotate": 0,
+        "BackgroundImage": "",
+        "BackgroundImageLayout": 3,
+        "Text": "请其他患者顺序排队等候！",
+        "TextAlign": "center",
+        "LetterSpacing": 0,
+        "BackColor": "00ffffff",
+        "GradualChangeColor": "7fffffff",
+        "ForeColor": "FFFF8A00",
+        "Controls": [],
+        "DataBindings": [],
+        "BorderWidth": {
+          "Type": "HtmlView.Rectangle",
+          "Value": {
+            "Left": 0,
+            "Top": 0,
+            "Width": 0,
+            "Height": 0,
+            "Right": 0,
+            "Bottom": 0,
+            "toString": "{Left=0, Top=0, Width=0, Height=0}",
+            "X": 0,
+            "Y": 0,
+            "Size": {
+              "Type": "Size",
+              "Value": {
+                "Width": 0,
+                "Height": 0,
+                "toString": "{Width=0, Height={1}}"
+              }
+            },
+            "toJSON": {
+              "Type": "object",
+              "Value": {
+                "Left": 0,
+                "Top": 0,
+                "Width": 0,
+                "Height": 0
+              }
+            }
+          }
+        },
+        "BorderStyle": "solid",
+        "BorderRadius": {
+          "Type": "HtmlView.Rectangle",
+          "Value": {
+            "Left": 0,
+            "Top": 0,
+            "Width": 0,
+            "Height": 0,
+            "Right": 0,
+            "Bottom": 0,
+            "toString": "{Left=0, Top=0, Width=0, Height=0}",
+            "X": 0,
+            "Y": 0,
+            "Size": {
+              "Type": "Size",
+              "Value": {
+                "Width": 0,
+                "Height": 0,
+                "toString": "{Width=0, Height={1}}"
+              }
+            },
+            "toJSON": {
+              "Type": "object",
+              "Value": {
+                "Left": 0,
+                "Top": 0,
+                "Width": 0,
+                "Height": 0
+              }
+            }
+          }
+        },
+        "BorderColor": "FF000000",
+        "Shadow": "0,0,0",
+        "ShadowColor": "",
+        "WhiteSpace": 0,
+        "ScrollDirection": 0
+      }
+    ],
+    "DataBindings": [],
+    "BackgroundImage": "",
+    "BackgroundImageLayout": 3,
+    "BackColor": "FFFFFFFF",
+    "ForeColor": "FF000000",
+    "ScrollMode": 0
+  },
+  "References": [
+    "System/Assembly.js",
+    "System/Net/WebSocketClient.js",
+    "jquery-1.9.1.min.js",
+    "HtmlControl.js",
+    "ListBox.js",
+    "QueueInfo.js",
+    "vconsole.min.js"
+  ],
+  "Includes": [
+    "../u/logo_橙色 .png"
+  ],
+  "Screen": {
+    "Width": 1920,
+    "Height": 1080
+  }
+}); Object.SetPropertyValue(__instance, "Name", "View"); Loading.fadeOut(); this.get = function() { return __instance; } }));</script></html>
